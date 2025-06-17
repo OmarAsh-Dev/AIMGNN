@@ -15,7 +15,6 @@
 * [API Endpoints](#api-endpoints)
 * [Samples](#samples)
 * [Citations](#citations)
-* [License](#license)
 * [Acknowledgments](#acknowledgments)
 
 AIMGNN is a full-stack AI-powered music generation platform built with a vanilla JavaScript frontend and a Python FastAPI backend leveraging Meta's MusicGen model. Users can generate high-quality music by entering text prompts or uploading melody seeds, preview results in-browser, and download compositions.
@@ -148,15 +147,6 @@ AIMGNN/
 
 ---
 
-## Samples
-
-Check out some example compositions generated using AIMGNN:
-
-* **Sample 1:** \[Link to Sample 1]
-* **Sample 2:** \[Link to Sample 2]
-* **Sample 3:** \[Link to Sample 3]
-
----
 
 ## Citations
 
@@ -184,14 +174,6 @@ Underlying audio codec citation:
   primaryClass={cs.CV}
 }
 ```
-
----
-
-## License
-
-This project is MIT licensed — see [`LICENSE`](LICENSE) for details.
-
----
 
 ## Acknowledgments
 
