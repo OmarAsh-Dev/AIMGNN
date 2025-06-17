@@ -1,0 +1,30 @@
+<!-- Floating Action Button (FAB) -->
+<button class="fab-menu-btn" id="fab-menu-btn" title="Menu">
+    <i class="fa-solid fa-plus"></i>
+</button>
+<button class="fab-action-btn" id="open-feedback-btn" title="Feedback" style="display:none;">
+    <i class="fa-regular fa-message"></i>
+</button>
+<button class="fab-action-btn" id="open-chatbot-btn" title="Chatbot" style="display:none;">
+    <i class="fa-regular fa-comment-dots"></i>
+</button>
+
+<!-- Feedback Modal -->
+<div class="feedback-modal" id="feedback-modal">
+    <div class="feedback-modal-content">
+        <span class="close-feedback" id="close-feedback-btn">&times;</span>
+        <h2>Feedback</h2>
+        <textarea id="feedback-text" placeholder="Let us know your thoughts, suggestions, or issues..." maxlength="500"></textarea>
+        <button id="submit-feedback-btn">Submit</button>
+    </div>
+</div>
+<!-- Chatbot Modal -->
+<div class="chatbot-modal" id="chatbot-modal">
+    <div class="chatbot-modal-content">
+        <span class="close-chatbot" id="close-chatbot-btn">&times;</span>
+        <h2>Chatbot</h2>
+        <div id="chatbot-messages"></div>
+        <input id="chatbot-input" type="text" placeholder="Type your message..." style="width:80%;padding:8px;border-radius:5px;border:1px solid #444;margin-bottom:10px;">
+        <button id="send-chatbot-btn" style="padding:8px 16px;border-radius:5px;background:#fe841c;color:#fff;border:none;">Send</button>
+    </div>
+</div>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMGNN</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/generate.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+</head>
+
+<body>
+    <script>
+        // Function to detect mobile devices
+        function isMobileDevice() {
+            return (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+            );
+        }
+
+        // Check if device is mobile/tablet and redirect
+        if (isMobileDevice()) {
+            window.location.href = 'notsupported.html';
+        }
+    </script>
+    <!-- Gradient Background -->
+    <div class="gradient-bg"></div>
+
+    <!-- side bar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/aimgnn_logo.png" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="user_dashboard.html"><i><img src="images/layout-Photoroom (Custom).png"
+                        alt=""></i><span>Dashboard</span></a>
+            <a href="editor.html"><i class="fas fa-edit"></i> <span>Editor</span></a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i></i><span>Gallery</span></a>
+            <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+        </div>
+
+        <div class="footer">
+            <div class="user-info">
+                <a href="account.html"><i class="fas fa-user-circle"></i></a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="generate-form">
+            <h1>Generate <span class="color-content">Content</span></h1>
+
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="basic">
+                        <i class="fas fa-music"></i> Basic
+                    </button>
+                    <button class="tab-button" data-tab="advanced">
+                        <i class="fas fa-sliders"></i> Advanced
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="basic-tab">
+                    <textarea id="prompt-textarea" placeholder="Enter your prompt here... (Works best for 10-50 words)."></textarea>
+                    <div class="group-generate">
+                        <div class="duration-control">
+                            <label>Duration (sec):</label>
+                            <input type="number" id="duration-input" min="10" max="120" value="30">
+                        </div>
+                        <button class="add-audio-button"></i>Add Audio <i class="fa-solid fa-video"></i></button>
+                        <button class="generate-button">Compose Music <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="advanced-tab">
+                    <div class="parameter-groups">
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>Top K</span>
+                                <span id="top-k-value">250.0</span>
+                            </div>
+                            <input type="range" min="0" max="400" value="250" class="slider-input" id="top-k">
+                        </div>
+
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>Top P</span>
+                                <span id="top-p-value">0.00</span>
+                            </div>
+                            <input type="range" min="0" max="100" value="0" step="1" class="slider-input" id="top-p">
+                        </div>
+
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>Temperature</span>
+                                <span id="temperature-value">1.0</span>
+                            </div>
+                            <input type="range" min="0" max="2" value="1" step="0.1" class="slider-input" id="temperature">
+                        </div>
+
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>CFG Coefficient</span>
+                                <span id="cfg-coef-value">3.0</span>
+                            </div>
+                            <input type="range" min="0" max="8" value="3" step="0.1" class="slider-input" id="cfg-coef">
+                        </div>
+
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>Two Step CFG</span>
+                                <span id="two-step-cfg-value">False</span>
+                            </div>
+                            <input type="range" min="0" max="1" value="0" step="1" class="slider-input" id="two-step-cfg">
+                        </div>
+
+                        <div class="parameter-group">
+                            <div class="slider-label">
+                                <span>Extend Stride</span>
+                                <span id="extend-stride-value">18.0</span>
+                            </div>
+                            <input type="range" min="10" max="30" value="18" step="1" class="slider-input" id="extend-stride">
+                        </div>
+                    </div>
+                   
+                    <div class="Advanced-Buttons">
+                        <p>Note: The default settings are recommended for production use. Please adjust with caution.</p>
+                        <button class="save-btn">Save Settings<i class="fa-solid fa-save"></i></button>
+                        <button class="preset-button">Default <i class="fa-solid fa-rotate"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Move loading container outside of generate-form -->
+        <div class="loading-container">
+            <div class="loading-circle"></div>
+            <p>Generating your music...</p>
+        </div>
+
+        <div class="prompt">
+            <h3>Prompt Examples</h3>
+            <div class="prompt-example">
+                <div onclick="copyPrompt(this)">
+                    <p>A slow, emotional ballad with soft piano, gentle acoustic guitar, and warm string pads. 120 BPM, melancholic yet hopeful mood.</p>
+                    <span><i class="fa-solid fa-copy"></i></span>
+                </div>
+                <div onclick="copyPrompt(this)">
+                    <p>A dynamic blend of hip-hop and orchestral elements, with sweeping strings and brass, evoking the vibrant energy of the city.</p>
+                    <span><i class="fa-solid fa-copy"></i></span>
+                </div>
+                <div onclick="copyPrompt(this)">
+                    <p>80s electronic track with melodic synthesizers, catchy beat and groovy bass</p>
+                    <span><i class="fa-solid fa-copy"></i></span>
+                </div>
+                <div onclick="copyPrompt(this)">
+                    <p>A light and cheerly EDM track, with syncopated drums, aery pads, and strong emotions</p>
+                    <span><i class="fa-solid fa-copy"></i></span>
+                </div>
+                <div onclick="copyPrompt(this)">
+                    <p>A dreamy and uplifting LoFi track with airy ambient textures, and a deep emotional undertone</p>
+                    <span><i class="fa-solid fa-copy"></i></span>
+                </div>
+
+                <!-- Repeat other prompt examples here -->
+            </div>
+        </div>
+
+        <div class="play">
+            <!-- Progress Container -->
+            <div class="progress-container">
+                <div class="track-info">
+                    <p class="track-time">00:00 / 00:00</p>
+                </div>
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <!-- Playback Controls -->
+            <div class="playback-controls">
+                <i class="fa-regular fa-bookmark bookmark"></i>
+                <button class="control-button play-pause" title="Play/Pause">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="volume-control">
+                    <button class="control-button mute" title="Mute/Unmute">
+                        <i class="fas fa-volume-high"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="js/generate.js"></script>
+
+
+
+    <!-- Feedback Modal -->
+    <div class="feedback-modal" id="feedback-modal">
+        <div class="feedback-modal-content">
+            <span class="close-feedback" id="close-feedback-btn">&times;</span>
+            <h2>Rate Your Experience</h2>
+            <p>How satisfied are you with the AI music generation?</p>
+
+            <div class="rating-container">
+                <div class="rating-scale">
+                    <div class="rating-numbers">
+                        <div class="rating-labels">
+                            <span>Not Satisfied-1</span>
+                            <span>Neutral-5</span>
+                            <span>Very Satisfied-10</span>
+                        </div>
+                        <div class="numbers">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                            <button class="rating-btn" data-value="6">6</button>
+                            <button class="rating-btn" data-value="7">7</button>
+                            <button class="rating-btn" data-value="8">8</button>
+                            <button class="rating-btn" data-value="9">9</button>
+                            <button class="rating-btn" data-value="10">10</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-buttons">
+                <button id="submit-feedback-btn">Submit Rating</button>
+                <button id="skip-feedback-btn">Skip</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

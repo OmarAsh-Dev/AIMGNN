@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Generation System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-5-theme/1.3.0/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-file-earmark-bar-graph"></i> Admin Panel - Report Generation</a>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-container">
+        <form id="reportForm">
+            <!-- Tables Selection -->
+            <div class="form-section">
+                <label class="form-label" title="Select the tables you want to include in the report">Select Tables:</label>
+                <select class="form-select select2-multiple" multiple id="tables">
+                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Composer">Composer</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Composer_Developer">Composer_Developer</option>
+                    <option value="MusicPiece">MusicPiece</option>
+                    <option value="Developer_MusicPiece">Developer_MusicPiece</option>
+                    <option value="Gallery">Gallery</option>
+                    <option value="FeedbackForm">FeedbackForm</option>
+                </select>
+            </div>
+
+            <!-- Columns Selection -->
+            <div class="form-section">
+                <label class="form-label" title="Select the columns you want to include in the report">Select Columns:</label>
+                <select class="form-select select2-multiple" multiple id="columns">
+                    <option value="manager_id">Manager ID</option>
+                    <option value="admin_id">Admin ID</option>
+                    <option value="admin_name">Admin Name</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="join_date">Join Date</option>
+                    <option value="composer_id">Composer ID</option>
+                    <option value="composer_name">Composer Name</option>
+                    <option value="developer_id">Developer ID</option>
+                    <option value="developer_name">Developer Name</option>
+                    <option value="music_piece_id">Music Piece ID</option>
+                    <option value="description">Description</option>
+                    <option value="created_at">Created At</option>
+                    <option value="updated_at">Updated At</option>
+                    <option value="media_id">Media ID</option>
+                    <option value="media_type">Media Type</option>
+                    <option value="title">Title</option>
+                    <option value="fbd_id">Feedback ID</option>
+                    <option value="fb_details">Feedback Details</option>
+                    <option value="submission_time">Submission Time</option>
+                </select>
+            </div>
+
+            <!-- Join Type Selection -->
+            <div class="form-section">
+                <label class="form-label">Select Join Type:</label>
+                <div class="d-flex align-items-center">
+                    <select class="form-select" id="joinType">
+                        <option value="" disabled selected>Select Join Type</option> <!-- Placeholder option -->
+                        <option value="INNER JOIN">INNER JOIN</option>
+                        <option value="LEFT JOIN">LEFT JOIN</option>
+                        <option value="RIGHT JOIN">RIGHT JOIN</option>
+                    </select>
+                    <button type="button" class="btn btn-danger btn-sm ms-2" id="clearJoinTypeBtn" style="display: none;">
+                        <i class="bi bi-x"></i> <!-- Icon for "X" -->
+                    </button>
+                </div>
+            </div>
+
+            <!-- Time Period Selection -->
+            <div class="form-section">
+                <label class="form-label" title="Select the time period for the report">Select Time Period:</label>
+                <select class="form-select" id="timePeriod">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                    <option value="custom">Custom Date Range</option>
+                </select>
+            </div>
+
+            <!-- Date Range Selection (Hidden by Default) -->
+            <div class="form-section date-range-section" id="dateRangeSection">
+                <label class="form-label">Select Date Range:</label>
+                <div class="row">
+                    <div class="col">
+                        <input type="date" class="form-control" id="fromDate">
+                    </div>
+                    <div class="col">
+                        <input type="date" class="form-control" id="toDate">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="form-section">
+                <label class="form-label">Conditions:</label>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <select class="form-select" id="conditionField">
+                            <option value="">Select Column</option>
+                            <option value="manager_id">Manager ID</option>
+                            <option value="admin_id">Admin ID</option>
+                            <option value="admin_name">Admin Name</option>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                            <option value="join_date">Join Date</option>
+                            <option value="composer_id">Composer ID</option>
+                            <option value="composer_name">Composer Name</option>
+                            <option value="developer_id">Developer ID</option>
+                            <option value="developer_name">Developer Name</option>
+                            <option value="music_piece_id">Music Piece ID</option>
+                            <option value="description">Description</option>
+                            <option value="created_at">Created At</option>
+                            <option value="updated_at">Updated At</option>
+                            <option value="media_id">Media ID</option>
+                            <option value="media_type">Media Type</option>
+                            <option value="title">Title</option>
+                            <option value="fbd_id">Feedback ID</option>
+                            <option value="fb_details">Feedback Details</option>
+                            <option value="submission_time">Submission Time</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="conditionOperator">
+                            <option value="=">=</option>
+                            <option value="!=">!=</option>
+                            <option value=">">></option>
+                            <option value="<"><</option>
+                            <option value=">=">>=</option>
+                            <option value="<="><=</option>
+                            <option value="LIKE">Contains</option>
+                            <option value="BETWEEN">Between</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="conditionValue" placeholder="Enter value...">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary w-100" id="addConditionBtn">Add Condition</button>
+                    </div>
+                </div>
+
+                <!-- Manual Condition Input -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Or Enter Condition Manually:</label>
+                        <input type="text" class="form-control" id="manualCondition" placeholder="Enter full condition...">
+                    </div>
+                </div>
+
+                <!-- Predefined Queries Dropdown -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Select Predefined Query:</label>
+                        <select class="form-select" id="predefinedQuery">
+                            <option value="">Select Query</option>
+                            <option value="SELECT * FROM Admin">Admin Users in the System</option>
+                            <option value="SELECT * FROM Composer">Registered Composers</option>
+                            <option value="SELECT * FROM Developer">Registered Developers</option>
+                            <option value="SELECT Composer_Name, COUNT(Music_Piece_ID) AS Number_of_Music_Pieces FROM MusicPiece GROUP BY Composer_Name">Number of Music Pieces Created by Each Composer</option>
+                            <option value="SELECT * FROM MusicPiece">Music Works with Details</option>
+                            <option value="SELECT * FROM Gallery">Gallery and Stored Content</option>
+                            <option value="SELECT * FROM Feedback">User  Feedback</option>
+                            <option value="SELECT Developer_Name, Music_Piece_Description, Composer FROM Developer_MusicPiece">Developers and the Music Pieces They Worked On</option>
+                            <option value="SELECT Composer_Name, COUNT(Music_Piece_ID) AS Number_of_Music_Pieces FROM MusicPiece WHERE Created_At >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH) GROUP BY Composer_Name">Most Productive Composers in the Last 6 Months</option>
+                            <option value="SELECT Music_Piece_Description, AVG(Feedback_Score) AS Average_Feedback_Score FROM Feedback GROUP BY Music_Piece_Description">Average Feedback Scores on Music Works</option>
+                            <option value="SELECT Role, COUNT(*) AS Count FROM Users GROUP BY Role">Role Distribution in the System</option>
+                            <option value="SELECT Composer_Name, COUNT(Music_Piece_ID) AS Music_Pieces FROM MusicPiece GROUP BY Composer_Name ORDER BY Music_Pieces DESC">Number of Music Pieces Created by Each Composer</option>
+                            <option value="SELECT Month, COUNT(*) AS Logins FROM User_Logins GROUP BY Month">Monthly User Logins</option>
+                            <option value="SELECT Media_Type, COUNT(*) AS Count FROM Gallery GROUP BY Media_Type">Content Distribution in the Gallery</option>
+                            <option value="SELECT Music_Piece_Description, AVG(Rating) AS Average_Rating FROM Ratings GROUP BY Music_Piece_Description">Highest Rated Music Works</option>
+                            <option value="SELECT Month, COUNT(*) AS Support_Requests FROM Support_Requests GROUP BY Month">Monthly Support Requests</option>
+                            <option value="SELECT Developer_Name, COUNT(Music_Piece_ID) AS Music_Pieces_Worked_On FROM Developer_MusicPiece GROUP BY Developer_Name">Most Active Developers</option>
+                            <option value="SELECT Country, COUNT(*) AS User_Count FROM Users GROUP BY Country">User  Distribution by Country</option>
+                            <option value="SELECT Music_Piece_Description, SUM(Revenue) AS Total_Revenue FROM Music_Piece_Revenue GROUP BY Music_Piece_Description">Music Piece Revenues</option>
+                            <option value="SELECT User_Name, COUNT(Comment_ID) AS Comment_Count FROM Comments GROUP BY User_Name ORDER BY Comment_Count DESC">Most Commenting Users</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="filtersList" class="mt-2">
+                    <!-- Conditions will be added here dynamically -->
+                </div>
+            </div>
+
+            <!-- Report Type -->
+            <div class="form-section">
+                <label class="form-label">Report Type:</label>
+                <select class="form-select" id="reportType">
+                    <option value="table">Table</option>
+                    <option value="chart">Chart</option>
+                </select>
+            </div>
+
+            <!-- Chart Type Selection (Hidden by Default) -->
+            <div class="form-section" id="chartTypeSection" style="display: none;">
+                <label class="form-label">Select Chart Type:</label>
+                <select class="form-select" id="chartType">
+                    <option value="bar">Bar Chart</option>
+                    <option value="pie">Pie Chart</option>
+                    <option value="line">Line Chart</option>
+                    <option value="histogram">Histogram</option>
+                </select>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success"><i class="bi bi-file-earmark-arrow-down"></i> Generate Report</button>
+                <button type="button" class="btn btn-primary" id="printBtn"><i class="bi bi-printer"></i> Print</button>
+                <button type="button" class="btn btn-secondary" id="exportPdfBtn"><i class="bi bi-file-earmark-pdf"></i> Export as PDF</button>
+                <button type="button" class="btn btn-secondary" id="exportExcelBtn"><i class="bi bi-file-earmark-excel"></i> Export as Excel</button>
+            </div>
+        </form>
+
+
+
+
+<!-- Results Area -->
+<div class="results-area" id="resultsContainer">
+    <!-- Logos Section -->
+    <div id="logosSection" class="mb-3">
+        <div class="logo-container left">
+            <img src="images\Picture1.png" alt="Logo 1" class="logo" />
+        </div>
+        <div class="logo-container center">
+            <img src="images/Picture2.png" alt="Logo 2" class="logo" />
+        </div>
+        <div class="logo-container right">
+            <img src="images/Picture3.png" alt="Logo 3" class="logo" />
+        </div>
+    </div>
+    
+
+    </div>
+</div>
+    
+    <!-- Container for generated reports -->
+    <div id="reportContent">
+        <div class="text-center text-muted">
+            <p>Report results will appear here</p>
+        </div>
+    </div>
+</div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="text-center mt-3" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html>

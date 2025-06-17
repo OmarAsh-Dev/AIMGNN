@@ -1,0 +1,162 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.results-area {
+    min-height: 200px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.date-range-section {
+    display: none; /* Hidden by default */
+}
+
+@media print {
+    .navbar, .form-section, .btn {
+        display: none;
+    }
+    .results-area {
+        border: none;
+    }
+}
+
+/* Logos Section Styles */
+#logosSection {
+    display: flex !important; /* Force display to ensure it's always visible */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+}
+
+.logo-container {
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    margin: 0 10px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+/* Important to preserve the logos when report is generated */
+#resultsContainer table,
+#resultsContainer .chart-container,
+#resultsContainer canvas {
+    margin-top: 20px;
+}
+
+@media print {
+    #logosSection {
+        display: flex !important;
+        page-break-inside: avoid;
+        margin-bottom: 15px;
+    }
+    
+    .logo {
+        max-width: 80px;
+    }
+}
+
+/* Select2 Custom Styles */
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection {
+    min-height: 38px;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__choice {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__choice__remove {
+    color: white;
+    margin-right: 5px;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown {
+    border-color: #dee2e6;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--highlighted[aria-selected] {
+    background-color: #0d6efd;
+}
+
+#filtersList .alert {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#filtersList .btn-danger {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+
+.logout {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#logout-button:hover {
+    border: 1px solid #fe841c;
+    transform: scale(1.05);
+}

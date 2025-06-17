@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+</head>
+
+<body>
+    <script>
+        // Function to detect mobile devices
+        function isMobileDevice() {
+            return (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+            );
+        }
+
+        // Check if device is mobile/tablet and redirect
+        if (isMobileDevice()) {
+            window.location.href = 'notsupported.html';
+        }
+    </script>
+    <!-- side bar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/aimgnn_logo.png" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i></i><span>Gallery</span></a>
+            <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+        </div>
+
+        <div class="footer">
+            <a href="login.html"><div class="user-info">
+                <i class="fas fa-user-circle"></i><span>Guest</span>
+            </div></a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Video Slider Section -->
+        <section class="section">
+            <h2 class="section-title">Featured Videos</h2>
+            <div class="video-slider">
+                <div class="video-container" id="videoContainer">
+                    <div class="video-slide">
+                        <div class="video-frame">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/Ey75Xw_ikqs" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3 class="video-title">Ai Music Explained</h3>
+                    </div>
+                    <div class="video-slide">
+                        <div class="video-frame">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/bp7Qb8QY1Pw" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3 class="video-title">How AI Sound and Music Generation Works</h3>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prevVideo">Previous</button>
+                    <button class="slider-btn" id="nextVideo">Next</button>
+                </div>
+            </div>
+        </section>
+
+               <!-- Music Samples Section -->
+               <section class="section">
+                <h2 class="section-title">Music Samples</h2>
+                <div class="music-grid">
+                    <div class="music-card">
+                        <h3>80s Electronic Track</h3>
+                        <audio controls>
+                            <source src="music/1749383508867-80s electronic track.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">A retro-inspired electronic track with 80s vibes</p>
+                    </div>
+    
+                    <div class="music-card">
+                        <h3>Dynamic Blend (Version 1)</h3>
+                        <audio controls>
+                            <source src="music/1749306688806-A dynamic blend of h.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">A harmonious blend of dynamic elements</p>
+                    </div>
+    
+                    <div class="music-card">
+                        <h3>Dynamic Blend (Version 2)</h3>
+                        <audio controls>
+                            <source src="music/1749314003919-A dynamic blend of h.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">An extended version with additional harmonies</p>
+                    </div>
+    
+                    <div class="music-card">
+                        <h3>Soft Piano</h3>
+                        <audio controls>
+                            <source src="music/soft-piano-music-272719.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">Gentle piano melodies creating a peaceful atmosphere</p>
+                    </div>
+    
+                    <div class="music-card">
+                        <h3>Shooting Stars</h3>
+                        <audio controls>
+                            <source src="music/shooting-stars-142600.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">An ethereal composition inspired by the night sky</p>
+                    </div>
+    
+                    <div class="music-card">
+                        <h3>Moonlit Night</h3>
+                        <audio controls>
+                            <source src="music/moonlit-night-relaxing-piano-241542.mp3" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="music-description">Relaxing piano piece perfect for peaceful moments</p>
+                    </div>
+    
+          
+                </div>
+            </section>
+
+        <!-- Articles Section -->
+        <section class="section">
+            <h2 class="section-title">Latest Research & Articles</h2>
+            <div class="article-slider">
+                <div class="article-container">
+                    <!-- First Grid (0-5) -->
+                    <div class="article-grid">
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">AI music generation is now really, really good</h3>
+                                <p class="article-excerpt">By Joe Pater - A comprehensive look at the current state of AI music generation and its implications.</p>
+                                <a href="https://websites.umass.edu/pater/2025/01/06/ai-music-generation-is-now-really-really-good/" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">Applications and Advances of AI in Music Generation</h3>
+                                <p class="article-excerpt">A technical deep dive into the latest advances in AI music generation technology.</p>
+                                <a href="https://arxiv.org/html/2409.03715v1" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">The Problem with AI-Generated Music</h3>
+                                <p class="article-excerpt">By Eve Riskind - A critical analysis of the challenges and ethical concerns in AI music generation.</p>
+                                <a href="https://www.cornellsun.com/article/2024/12/the-problem-with-ai-generated-music" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">What AI in music can — and can't — do</h3>
+                                <p class="article-excerpt">By Adam Clair - An exploration of AI's capabilities and limitations in music production.</p>
+                                <a href="https://www.vox.com/the-highlight/358201/how-does-ai-music-work-benefits-creativity-production-spotify" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">How AI is transforming the creative economy and music industry</h3>
+                                <p class="article-excerpt">An analysis of AI's impact on the music industry's economic landscape.</p>
+                                <a href="https://www.ohio.edu/news/2024/04/how-ai-transforming-creative-economy-music-industry" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">AI-Generated Music: A Creative Revolution or a Cultural Crisis?</h3>
+                                <p class="article-excerpt">By Rolling Stone Culture Council - Examining the cultural implications of AI in music creation.</p>
+                                <a href="https://council.rollingstone.com/blog/the-impact-of-ai-generated-music" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Grid (6-11) -->
+                    <div class="article-grid">
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">Artificial intelligence in music: recent trends and challenges</h3>
+                                <p class="article-excerpt">A scholarly analysis of current trends and future challenges in AI music technology.</p>
+                                <a href="https://link.springer.com/article/10.1007/s00521-024-10555-x" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">AI Music Generators That Create Original Songs in 2025</h3>
+                                <p class="article-excerpt">By Pratham Chitlangiya - A comprehensive guide to current AI music generation tools.</p>
+                                <a href="https://www.digitalocean.com/resources/articles/ai-music-generators" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">AI's Impact On Music In 2025: Licensing, Creativity And Industry Survival</h3>
+                                <p class="article-excerpt">An analysis of AI's influence on music licensing and industry dynamics.</p>
+                                <a href="https://www.forbes.com/sites/virginieberger/2024/12/30/ais-impact-on-music-in-2025-licensing-creativity-and-industry-survival/" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+
+                        <div class="article-slide">
+                            <div class="article-content">
+                                <h3 class="article-title">AI-Enabled Text-to-Music Generation: A Comprehensive Review</h3>
+                                <p class="article-excerpt">A detailed review of methods and frameworks in text-to-music generation.</p>
+                                <a href="https://www.mdpi.com/2079-9292/14/6/1197" class="read-more" target="_blank">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prevArticle">Previous</button>
+                    <button class="slider-btn" id="nextArticle">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Section -->
+        <section class="section">
+            <h2 class="section-title">Featured Books</h2>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search gallery...">
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="guitar">Guitar</button>
+                <button class="filter-btn" data-filter="jazz">Jazz</button>
+                <button class="filter-btn" data-filter="piano">Piano</button>
+                <button class="filter-btn" data-filter="rock">Rock</button>
+            </div>
+
+            <main class="gallery-container">
+                <div class="gallery" id="gallery">
+                    <!-- Gallery items will be inserted here via JavaScript -->
+                </div>
+            </main>
+
+            <div class="lightbox" id="lightbox">
+                <div class="lightbox-content">
+                    <button class="lightbox-close" id="lightbox-close">&times;</button>
+                    <img src="" alt="" class="lightbox-img" id="lightbox-img">
+                    <div class="lightbox-details">
+                        <h2 class="lightbox-title" id="lightbox-title"></h2>
+                        <p class="lightbox-category" id="lightbox-category"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js\gallery.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script>
+        document.querySelector('.sidebar').classList.add('logged-in');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - AIMGNN</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    footer {
+      padding: 1rem 0;
+      height: 30vh;
+    }
+    .footer-content {
+      padding: 1rem;
+    }
+    .faq {
+      padding: 0.5rem;
+      margin-bottom: 50px;
+      background: linear-gradient(0deg, rgba(42, 58, 74, 0), #131f3300);
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Function to detect mobile devices
+    function isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+      );
+    }
+
+    // Check if device is mobile/tablet and redirect
+    if (isMobileDevice()) {
+      window.location.href = 'notsupported.html';
+    }
+  </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="logo1">
+        <img src="images/mti_Logo.png" alt="Logo" />
+      </div>
+      <div class="logo2">
+        <img src="images/aimgnn_logo.png" alt="Logo" />
+      </div>
+      <div class="logo3">
+        <img src="images/faculty_logo_upscaled.png" alt="Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="tutorial.html">Tutorials</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <a href="login.html"><button class="cta-button">Compose</button></a>
+    </div>
+  </nav>
+
+  <!-- Gradient Background -->
+  <div class="gradient-bg"></div>
+
+  <main class="faq">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is AIMGNN?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          AIMGNN is an AI-powered music generation platform that allows you to create unique music tracks using text prompts.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Is AIMGNN free to use?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Yes, AIMGNN is free to use.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How do I create music with AIMGNN?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Simply enter a text prompt describing the music you want to create, and our AI will generate a unique track based on your description.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can I customize the generated music?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Yes, you can edit the generated music by providing additional prompts or using our advanced editing tools.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Can I use the music commercially?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Yes, all music generated with AIMGNN can be used commercially. You retain full rights to the music you create.
+        </p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Will I get copyright claims for using AIMGNN music?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          No, the music you generate is unique and owned by you. However, if you encounter any copyright claims, please contact our support team.
+        </p>
+      </div>
+      <h2>How to use AIMGNN</h2>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>How to use AIMGNN?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          To use AIMGNN, simply enter a text prompt describing the music you want to create, and our AI will generate a unique track based on your description.
+        </p>
+      </div>
+      <h2>Generation Parameters</h2>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is the maximum duration (length) of a generated piece?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          The maximum length of a generated piece is 2 minutes.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is the minimum duration (length) of a generated piece?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          The minimum duration of a generated piece is 10 seconds.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is Temperature in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Temperature is a parameter that controls the randomness of the generated music. A higher temperature will produce more random music, while a lower temperature will produce more predictable music.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is Top P in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Top P is a parameter that controls the diversity of the generated music. A higher top P will produce more diverse music, while a lower top P will produce more similar music.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is Top K in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Top K is a parameter that controls the diversity of the generated music. A higher top K will produce more diverse music, while a lower top K will produce more similar music.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is cfg_coef in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          cfg_coef is a parameter that controls the consistency of the generated music. A higher cfg_coef will produce more consistent music, while a lower cfg_coef will produce more random music.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is two_step_cfg in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          two_step_cfg is a parameter that controls the consistency of the generated music. A higher two_step_cfg will produce more consistent music, while a lower two_step_cfg will produce more random music.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is extend_stride in the generation parameters?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">extend_stride is a parameter that affects melody continuity over extended durations</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <div>
+          <h3>PRODUCT</h3>
+          <ul>
+            <li><a href="tutorial.html">How it works</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Artists</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>COMPANY</h3>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>LEGAL</h3>
+          <ul>
+            <li><a href="#">Terms of use</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Copyright Claim</a></li>
+          </ul>
+        </div>
+      </div>
+      <p>AIMGNN is an AI music generator that can create music for your content with multimodal prompts.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

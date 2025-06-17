@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMGNN</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+</head>
+
+<body>
+    <!-- Gradient Background -->
+    <div class="gradient-bg"></div>
+
+    <!-- side bar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/aimgnn_logo.png" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="editor.html"><i class="fas fa-edit"></i> <span>Editor</span></a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i></i><span>Gallery</span></a>
+            <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+        </div>
+
+        <div class="footer">
+            <div class="user-info">
+                <a href="dashboard.html"><i class="fas fa-user-circle"></i></a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- & Acount Info -->
+    <div class="account-info">
+
+    </div>
+    <section class="account-info">
+        <form action="#" class="account-form">
+            <h3>Account Info</h3>
+            <div class="input-box">
+                <label>Full Name</label> <br>
+                <input type="text" id="account-username" placeholder="" readonly/>
+            </div>
+            <div class="input-box">
+                <label>Email Address</label><br>
+                <input type="text" id="account-email" placeholder="" readonly/>
+            </div>
+        </form>
+        <br>
+        <br>
+
+        <form action="#" class="Change-Password">
+            <h3>Change Password</h3>
+            <div class="input-box">
+                <label>Old Password</label> <br>
+                <input type="password" name="old_password" placeholder="Enter Last Password" required />
+            </div>
+            <div class="input-box">
+                <label>New Password</label><br>
+                <input type="password" name="new_password" placeholder="Enter Password" required />
+            </div>
+            <div class="input-box">
+                <label>Repeat New Password</label><br>
+                <input type="password" name="repeat_password" placeholder="Repeat New Password" required />
+            </div>
+            <div class="btn">
+                <button>Change Password</button>
+            </div>
+        </form>
+    </section>
+    <!-- Main Content -->
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

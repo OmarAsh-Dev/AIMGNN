@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Engineer Report Page</title>
+  <link rel="stylesheet" href="css/audioengineer.css">
+  <!-- Import external libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <span class="navbar-logo">Audio Engineer Report Page</span>
+    </div>
+  </nav>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- Control panel -->
+    <div class="control-panel">
+      <!-- Date range section -->
+      <div class="control-section date-section">
+        <h3>Date Range</h3>
+        <div class="date-inputs">
+          <input type="date" id="startDate" class="date-picker" />
+          <input type="date" id="endDate" class="date-picker" />
+        </div>
+        <select id="datePresets" class="dropdown">
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+          <option value="quarter">This Quarter</option>
+          <option value="year">This Year</option>
+        </select>
+      </div>
+      <!-- Query selection section -->
+      <div class="control-section query-section">
+        <h3>Select Query</h3>
+        <select id="querySelect" class="dropdown">
+          <option value="custom">Custom Aggregated Query</option>
+        </select>
+      </div>
+      <!-- Report type and generate button -->
+      <div class="control-section report-section">
+        <h3>Report Type</h3>
+        <select id="reportType" class="dropdown">
+          <option value="table">Table View</option>
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+        <button onclick="generateReport()" class="btn generate-btn">
+          <i class="icon">📊</i> Generate Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Report section -->
+    <div id="reportContainer" class="report-container">
+      <div class="report-header">
+        <div class="logo-container">
+          <div class="logo left-logo">
+            <img src="images/Picture1.png" alt="Logo 2" class="report-logo">
+          </div>
+          <div class="logo center-logo">
+            <img src="images/Picture3.png" alt="Logo 3" class="report-logo">
+          </div>
+          <div class="logo right-logo">
+            <img src="images/Picture2.png" alt="Logo 1" class="report-logo">
+          </div>
+        </div>
+        <div class="title-section">
+          <p class="sub-title">AI MGNN</p>
+          <h1 id="reportTitle" contenteditable="true">Audio Engineer Report</h1>
+        </div>
+      </div>
+      <div id="reportContent" class="report-content"></div>
+      <div id="chartContainer" class="chart-container">
+        <canvas id="reportChart"></canvas>
+      </div>
+      <div class="comment-section">
+        <div class="comment-label">Comments:</div>
+        <div class="comment-content" contenteditable="true"></div>
+      </div>
+      <div class="signature-section">
+        <div class="signature-wrapper">
+          <span class="signature-label">Signature:</span>
+          <div class="signature-line"></div>
+        </div>
+        <div class="report-generated" id="reportGenerated"></div>
+      </div>
+      <div class="report-footer">
+        <div class="confidentiality">
+          <p>AI MGNN System - Confidential Report</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print-only element -->
+    <div class="print-only"></div>
+
+    <!-- Action buttons -->
+    <div class="action-buttons">
+      <button onclick="printReport()" class="btn print-btn">
+        <i class="icon">🖨️</i> Print
+      </button>
+      <div class="share-dropdown">
+        <button onclick="toggleShareMenu()" class="btn share-btn">
+          <i class="icon">📤</i> Share
+        </button>
+        <div id="shareMenu" class="share-menu">
+          <button onclick="toggleShareMenu()" class="share-option">Close</button>
+          <button onclick="shareViaWhatsApp()" class="share-option">WhatsApp</button>
+          <button onclick="shareViaEmail()" class="share-option">Email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- External JavaScript -->
+  <script type="module" src="js/audioengineer.js"></script>
+</body>
+</html>

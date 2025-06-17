@@ -1,0 +1,900 @@
+/* General Styles */
+
+html,
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard syntax */
+}
+
+input,
+textarea,
+[contenteditable] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Updated Root Color Variables */
+
+:root {
+    /* Primary Colors */
+    --primary-100: #FFE8D6;
+    --primary-200: #FFD1AC;
+    --primary-300: #FFB783;
+    --primary-400: #FF9E5A;
+    --primary-500: #FF7F22;
+    --primary-600: #FF6B00;
+    --primary-700: #CC5500;
+    --primary-800: #993F00;
+    --primary-900: #662900;
+    /* Neutral Colors */
+    --neutral-100: #F8F9FA;
+    --neutral-200: #E9ECEF;
+    --neutral-300: #DEE2E6;
+    --neutral-400: #CED4DA;
+    --neutral-500: #ADB5BD;
+    --neutral-600: #6C757D;
+    --neutral-700: #495057;
+    --neutral-800: #343A40;
+    --neutral-900: #212529;
+    /* Gradient Background */
+    --color-bg1: #212529;
+    --color-bg2: #1a1a2e;
+}
+
+
+/* Floating GIF */
+
+.floating-gif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 100px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.floating-gif.visible {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+.floating-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* Navbar */
+
+.navbar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background: var(--neutral-900);
+    backdrop-filter: blur(10px);
+    padding: 7px 25px;
+    z-index: 1000;
+    transition: top 0.5s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: -100px;
+    border-bottom: 1px solid var(--neutral-800);
+}
+
+.navbar.visible {
+    top: 0;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.logo1 img {
+    height: 60px;
+    margin-top: 12px;
+    margin-left: 30px;
+}
+
+.logo2 img {
+    height: 60px;
+    margin-top: 5px;
+}
+
+.logo3 img {
+    height: 65px;
+    width: 75px;
+    margin-top: 5px;
+    margin-left: 14px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-grow: 1;
+    margin-left: 51vw;
+}
+
+.nav-links a {
+    color: var(--neutral-100);
+    text-decoration: none !important;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:link,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:active {
+    text-decoration: none !important;
+}
+
+.nav-links a:hover {
+    color: rgba(248, 249, 250, 0.8);
+}
+
+
+/* Buttons: Same Orange in Both Themes */
+
+.navbar .cta-button,
+.cta-button,
+.faq-button {
+    background-color: var(--primary-500);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .cta-button:hover,
+.cta-button:hover,
+.faq-button:hover {
+    background-color: var(--primary-700);
+    transform: scale(1.05);
+}
+
+
+/* Specific Button Styles */
+
+.navbar .cta-button {
+    font-size: 20px;
+    margin-right: -160px;
+    padding: 10px 20px;
+    gap: 20px;
+    font-family: "IBM Plex Mono", sans-serif;
+    left: 20px;
+    position: relative;
+    display: flex;
+}
+
+.cta-button {
+    font-size: 24px;
+    padding: 15px 30px;
+    font-family: "IBM Plex Mono", sans-serif;
+}
+
+
+/* Gradient Background */
+
+.gradient-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    background: linear-gradient(to bottom, var(--color-bg1), var(--color-bg2));
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+
+/* Hero Section */
+
+.hero {
+    background-image: url('assets/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 24px;
+    margin-bottom: 70px;
+}
+
+
+/* Scroll Down Arrow Styling */
+
+.scroll-down {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down img {
+    width: 40px;
+    height: auto;
+}
+
+
+/* Bounce Animation */
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+/* Samples Section */
+
+.samples {
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.samples h2 {
+    font-size: 32px;
+    margin-top: 60px;
+    margin-bottom: -3px;
+    color: var(--primary-500);
+}
+
+.samples-title {
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.samples-card {
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.samples-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.samples-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.samples-item video {
+    width: 100%;
+    height: 580px;
+    object-fit: fill;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.samples-item img {
+    width: 100%;
+    height: 570px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.play-button {
+    position: absolute;
+    bottom: 90px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.play-button::after {
+    content: "▶";
+    font-size: 24px;
+    color: white;
+}
+
+.play-button.playing::after {
+    content: "⏸";
+}
+
+
+/* Features Section */
+
+.features-title {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: var(--primary-500);
+    font-size: 2em;
+    margin: 0;
+}
+
+.features {
+    margin-top: 62px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.feature-card {
+    background: linear-gradient(180deg, var(--neutral-900), #131F33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--neutral-100);
+    border-radius: 35px;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    width: auto;
+    height: 770px;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    color: var(--primary-500);
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.feature-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.feature-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.feature-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.feature-text h3 {
+    font-size: 38px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.feature-text p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.feature-text .highlight {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.feature-image {
+    flex: 1;
+    text-align: left;
+    max-width: 600px;
+}
+
+.feature-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+
+/* FAQ Section */
+
+.faq {
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: white;
+    transition: margin-left 0.3s ease, opacity 0.5s ease, visibility 0.5s ease;
+    background: linear-gradient(0deg, rgba(42, 58, 74, 0.093), #131F33);
+    height: auto;
+    border-radius: 35px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.faq h2 {
+    font-size: 32px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: var(--primary-500);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 30px;
+    transition: margin-bottom 0.3s ease, all 0.3s ease;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 18px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+}
+
+.toggle-button {
+    background: black;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: rgba(34, 30, 30, 0.8);
+    transform: scale(1.1);
+}
+
+.toggle-button::before {
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.faq-item.active .toggle-button::before {
+    content: "\f068";
+}
+
+.faq-answer {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.819);
+    margin-top: 30px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    padding: 0 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    opacity: 1;
+    padding: 30px 0 0;
+}
+
+.faq-item.active {
+    margin-bottom: 100px;
+}
+
+
+/* FAQ Button Container and Button Styles */
+
+.faq-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.faq-button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: var(--neutral-900);
+    color: var(--neutral-100);
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    margin-top: auto;
+}
+
+.footer-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.footer-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.footer-content a {
+    color: var(--primary-500);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: var(--primary-700);
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-links div {
+    text-align: left;
+}
+
+.footer-links h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    font-size: 18px;
+}
+
+.billboard-text {
+    font-size: 50px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 7%;
+}
+
+.billboard-text span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-text 9s linear infinite;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-icons i {
+    font-size: 24px;
+    color: var(--neutral-100);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icons i:hover {
+    color: rgba(248, 249, 250, 0.8);
+    transform: scale(1.1);
+}
+
+.footer-content p {
+    padding-top: 10px;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Black background class */
+
+body.black-background {
+    background: black;
+}
+
+
+/* Light Mode Styles */
+
+body.light-mode {
+    background-color: var(--neutral-100);
+    color: #000;
+}
+
+body.light-mode .navbar {
+    background: linear-gradient(0deg, var(--neutral-300), var(--neutral-400));
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary-500);
+}
+
+body.light-mode .nav-links a {
+    color: #000;
+}
+
+body.light-mode .nav-links a:hover {
+    color: #000;
+}
+
+
+/* Ensure buttons stay orange in light mode */
+
+body.light-mode .cta-button,
+body.light-mode .faq-button,
+body.light-mode .navbar .cta-button {
+    background-color: var(--primary-500);
+    color: #fff;
+}
+
+body.light-mode .cta-button:hover,
+body.light-mode .faq-button:hover,
+body.light-mode .navbar .cta-button:hover {
+    background-color: var(--primary-700);
+}
+
+body.light-mode .gradient-bg {
+    background: linear-gradient(to bottom, var(--neutral-100), var(--neutral-200), var(--neutral-300));
+}
+
+
+/* Update Footer in Light Mode:
+   A soft gradient from neutral-300 to neutral-400 with dark text for readability */
+
+body.light-mode footer {
+    background: linear-gradient(0deg, var(--neutral-300), var(--neutral-400));
+    color: var(--neutral-900);
+}
+
+body.light-mode .footer-content a {
+    color: #000;
+}
+
+body.light-mode .footer-content a:hover {
+    color: #000;
+}
+
+body.light-mode .footer-icons i {
+    color: #000;
+}
+
+body.light-mode .footer-icons i:hover {
+    color: #000;
+}
+
+
+/* Override text colors in light mode for content sections */
+
+body.light-mode .hero {
+    color: #000;
+}
+
+body.light-mode .samples {
+    color: #000;
+}
+
+body.light-mode .samples-card {
+    background: rgba(255, 255, 255, 0);
+}
+
+body.light-mode .features {
+    color: #000;
+}
+
+body.light-mode .feature-card {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
+}
+
+
+/* Ensure all p tags, .faq-answer, and text inside .feature-text (including h3) are dark */
+
+body.light-mode p,
+body.light-mode .faq-answer,
+body.light-mode .feature-text p,
+body.light-mode .feature-text h3 {
+    color: #000;
+}
+
+body.light-mode .faq {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.277));
+    color: #000;
+}
+
+body.light-mode .faq-item {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .faq-question h3 {
+    color: #000;
+}
+
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.dark-mode-icon {
+    color: black;
+}
+
+.logout {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#logout-button:hover {
+    border: 1px solid #fe841c;
+    transform: scale(1.05);
+}

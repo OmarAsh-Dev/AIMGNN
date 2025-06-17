@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+</head>
+
+<body>
+    <!-- side bar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/aimgnn_logo.png" alt="Logo">
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="editor.html"><i class="fas fa-edit"></i> <span>Editor</span></a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i></i><span>Gallery</span></a>
+            <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+        </div>
+
+        <div class="footer">
+            <div class="user-info">
+                <a href="account.html"><i class="fas fa-user-circle"></i></a>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <p>System Overview & Analytics</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <h3>Total Users</h3>
+                <div class="stat-value" id="totalUsers">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Total Generations</h3>
+                <div class="stat-value" id="totalGenerations">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Active Users Today</h3>
+                <div class="stat-value" id="activeUsers">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Generations Today</h3>
+                <div class="stat-value" id="todayGenerations">0</div>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div class="chart-container">
+                <div class="chart-title">User Growth</div>
+                <canvas id="usersChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Music Generations</div>
+                <canvas id="musicChart"></canvas>
+            </div>
+        </div>
+
+                <div class="stats-row">
+            <div class="chart-container full-width">
+                <div class="chart-title">System Activity Timeline</div>
+                <canvas id="activityTimelineChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/script.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+/* FAB Menu Button */
+.fab-menu-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1200;
+    background: linear-gradient(180deg, #131A26, #131F33);
+    border: 1.5px solid #fe841c;
+    color: #fe841c;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.fab-menu-btn.open {
+    background: #fe841c;
+    color: #131A26;
+    transform: rotate(45deg);
+}
+
+/* FAB Action Buttons */
+.fab-action-btn {
+    position: fixed;
+    right: 30px;
+    z-index: 1199;
+    background: linear-gradient(180deg, #131A26, #131F33);
+    border: 1.5px solid #fe841c;
+    color: #fe841c;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+}
+.fab-action-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+#open-feedback-btn {
+    bottom: 100px;
+}
+#open-chatbot-btn {
+    bottom: 170px;
+}
+
+/* Feedback Modal Overlay */
+.feedback-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(19, 26, 38, 0.85);
+    backdrop-filter: blur(2px);
+    align-items: center;
+    justify-content: center;
+}
+.feedback-modal.active {
+    display: flex;
+}
+.feedback-modal-content {
+    background: linear-gradient(180deg, #131A26, #131F33);
+    border-radius: 25px;
+    border: 1.5px solid #fe841c;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 32px 28px 24px 28px;
+    min-width: 340px;
+    max-width: 90vw;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+.feedback-modal-content h2 {
+    color: #fe841c;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.feedback-modal-content textarea {
+    width: 100%;
+    min-height: 90px;
+    max-height: 180px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    padding: 12px;
+    resize: vertical;
+    outline: none;
+}
+.feedback-modal-content textarea::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+.feedback-modal-content button {
+    padding: 10px 28px;
+    border-radius: 12px;
+    background: rgba(254, 132, 28, 0.2);
+    color: #fe841c;
+    font-size: 1.1rem;
+    border: 1px solid #fe841c;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+.feedback-modal-content button:hover {
+    background: #fe841c;
+    color: #131A26;
+}
+.close-feedback {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 1.5rem;
+    color: #fe841c;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-feedback:hover {
+    color: #fff;
+}
+
+/* Chatbot Modal */
+.chatbot-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(19, 26, 38, 0.85);
+    backdrop-filter: blur(2px);
+    align-items: center;
+    justify-content: center;
+}
+.chatbot-modal.active {
+    display: flex;
+}
+.chatbot-modal-content {
+    background: linear-gradient(180deg, #131A26, #131F33);
+    border-radius: 25px;
+    border: 1.5px solid #fe841c;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 32px 28px 24px 28px;
+    min-width: 340px;
+    max-width: 90vw;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+.close-chatbot {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 1.5rem;
+    color: #fe841c;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-chatbot:hover {
+    color: #fff;
+}
+#chatbot-messages {
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    background: #222;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#chatbot-messages::-webkit-scrollbar {
+    width: 8px;
+    background: #181d23;
+    border-radius: 8px;
+}
+#chatbot-messages::-webkit-scrollbar-thumb {
+    background: #fe841c;
+    border-radius: 8px;
+    min-height: 30px;
+}
+#chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: #ffb36b;
+}
+#chatbot-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #fe841c #181d23;
+}
+#chatbot-input {
+    width: 80%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    margin-bottom: 10px;
+    background: #181d23;
+    color: #fff;
+}
+#send-chatbot-btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+#send-chatbot-btn:hover {
+    background: #ff9c47;
+}
+.chat-message {
+    display: flex;
+    width: 100%;
+}
+.user-message {
+    justify-content: flex-end;
+}
+.bot-message {
+    justify-content: flex-start;
+}
+.bubble {
+    max-width: 75%;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-break: break-word;
+    box-shadow: 0 1px 1.5px rgba(0,0,0,0.07);
+    margin-bottom: 2px;
+    position: relative;
+}
+.user-message .bubble {
+    background: #dcf8c6;
+    color: #222;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+}
+.bot-message .bubble {
+    background: #fff;
+    color: #222;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+.bubble.error {
+    background: #ffeaea;
+    color: #c00;
+    border: 1px solid #fbb;
+}
+@media (max-width: 500px) {
+    .bubble {
+        max-width: 90%;
+        font-size: 0.95rem;
+    }
+}

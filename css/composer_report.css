@@ -1,0 +1,409 @@
+/* Define CSS custom properties for consistent theming */
+:root {
+  --primary-color: #1D3557;
+  --secondary-color: #34495E;
+  --accent-color: #E63946;
+  --text-color: #343A40;
+  --border-color: #BDC3C7;
+  --background-color: #EBEBEB;
+  --hover-color: #1A252F;
+  --button-bg: #E67E22;
+  --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Reset default margins, padding, and set box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the body element */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Set font stack */
+  background-color: var(--background-color); /* Apply background color */
+  color: var(--text-color); /* Set text color */
+  padding: 20px; /* Add padding around content */
+  animation: fadeIn 0.8s ease-in; /* Apply fade-in animation */
+}
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Style the main container */
+.container {
+  width: 100%; /* Full width */
+  margin: 80px auto 2rem auto; /* Center with top margin for navbar */
+  padding: 0 20px; /* Add horizontal padding */
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed; /* Fix navbar at top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure navbar is above other content */
+  background: linear-gradient(90deg, #1D3557, #457B9D); /* Gradient background */
+  color: #fff; /* White text */
+  padding: 1rem 0; /* Vertical padding */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  text-align: center; /* Center content */
+  transition: top 0.3s; /* Smooth transition for hiding/showing */
+}
+
+/* Hide navbar when scrolling down */
+.navbar.hidden {
+  top: -100px;
+}
+
+/* Style navbar container */
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style navbar logo */
+.navbar-logo {
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: bold; /* Bold text */
+}
+
+/* Control Panel Styles */
+.control-panel {
+  display: flex; /* Flexbox layout */
+  gap: 20px; /* Space between sections */
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  justify-content: space-between; /* Distribute space */
+  align-items: flex-start; /* Align items at top */
+  background: linear-gradient(135deg, #fff, #f9f9f9); /* Gradient background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: var(--card-shadow); /* Apply shadow */
+  padding: 1.5rem; /* Internal padding */
+  margin-bottom: 2rem; /* Space below */
+}
+
+/* Style individual control sections */
+.control-section {
+  flex: 1; /* Grow to fill space */
+  min-width: 250px; /* Minimum width */
+  background-color: #fff; /* White background */
+  border: 1px solid var(--border-color); /* Border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1rem; /* Internal padding */
+  box-shadow: var(--card-shadow); /* Apply shadow */
+}
+
+/* Style section headings */
+.control-section h3 {
+  font-size: 1.1rem; /* Slightly larger font */
+  margin-bottom: 0.5rem; /* Space below */
+  color: var(--primary-color); /* Primary color */
+}
+
+/* Style date input container */
+.date-inputs {
+  display: flex; /* Flexbox layout */
+  gap: 10px; /* Space between inputs */
+  margin-bottom: 0.5rem; /* Space below */
+}
+
+/* Style date picker inputs */
+.date-picker {
+  padding: 0.75rem; /* Internal padding */
+  border: 1px solid var(--border-color); /* Border */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: #fff; /* White background */
+  font-size: 0.9rem; /* Smaller font */
+}
+
+/* Style dropdown menus */
+.dropdown {
+  width: 100%; /* Full width */
+  padding: 0.75rem; /* Internal padding */
+  border: 1px solid var(--border-color); /* Border */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: #fff; /* White background */
+  font-size: 0.9rem; /* Smaller font */
+  margin-top: 10px; /* Space above */
+}
+
+/* Style buttons */
+.btn {
+  display: flex; /* Flexbox for icon and text */
+  align-items: center; /* Center vertically */
+  gap: 0.5rem; /* Space between icon and text */
+  padding: 0.75rem 1.5rem; /* Padding */
+  border: none; /* No border */
+  border-radius: 0.5rem; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  font-weight: 500; /* Medium font weight */
+  transition: all 0.2s; /* Smooth transitions */
+  background-color: var(--button-bg); /* Button background color */
+  color: #fff; /* White text */
+}
+
+/* Style generate button specifically */
+.generate-btn {
+  margin-top: 15px; /* Space above */
+}
+
+/* Report Container Styles */
+.report-container {
+  background-color: #fff; /* White background */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Shadow */
+  padding: 2rem; /* Internal padding */
+  margin-bottom: 2rem; /* Space below */
+}
+
+/* Style report header */
+.report-header {
+  margin-bottom: 2rem; /* Space below */
+  padding-bottom: 1rem; /* Padding below */
+  border-bottom: 2px solid var(--border-color); /* Bottom border */
+  text-align: center; /* Center content */
+}
+
+/* Style logo container */
+.logo-container {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space logos evenly */
+  align-items: flex-end; /* Align at bottom */
+}
+
+/* Style individual logos */
+.logo {
+  width: 80px; /* Fixed width */
+  height: 80px; /* Fixed height */
+  border-radius: 0.5rem; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Style logo images */
+.logo img {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: contain; /* Fit image without distortion */
+}
+
+/* Style title section */
+.title-section {
+  margin-top: -10px; /* Adjust position */
+}
+
+/* Style subtitle */
+.title-section .sub-title {
+  font-size: 1rem; /* Font size */
+  color: var(--button-bg); /* Button color */
+  font-weight: bold; /* Bold text */
+  margin: 10px 0 5px; /* Margins */
+}
+
+/* Style main title */
+.title-section h1 {
+  font-size: 1.8rem; /* Larger font */
+  font-weight: bold; /* Bold text */
+  color: var(--secondary-color); /* Secondary color */
+  margin: 5px 0; /* Margins */
+}
+
+/* Style report content area */
+.report-content {
+  margin-bottom: 2rem; /* Space below */
+}
+
+/* Style chart container */
+.chart-container {
+  max-width: 800px; /* Maximum width */
+  margin: 2rem auto; /* Center with margins */
+  height: 400px; /* Fixed height */
+}
+
+/* Style report table */
+.report-table {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Merge borders */
+  margin: 1rem 0; /* Margins */
+}
+
+/* Style table cells */
+.report-table th,
+.report-table td {
+  padding: 1rem; /* Internal padding */
+  border: 1px solid var(--border-color); /* Border */
+  text-align: left; /* Left-align text */
+}
+
+/* Style table headers */
+.report-table th {
+  background-color: var(--primary-color); /* Primary color background */
+  color: #fff; /* White text */
+  font-weight: 600; /* Semi-bold */
+}
+
+/* Comment Section Styles */
+.comment-section {
+  margin: 2rem 0; /* Vertical margins */
+  padding: 1rem; /* Internal padding */
+  background-color: #F8F9FA; /* Light gray background */
+  border-radius: 0.5rem; /* Rounded corners */
+}
+
+/* Style comment label */
+.comment-label {
+  font-weight: 600; /* Semi-bold */
+  margin-bottom: 0.5rem; /* Space below */
+  color: var(--secondary-color); /* Secondary color */
+}
+
+/* Style comment content area */
+.comment-content {
+  min-height: 80px; /* Minimum height */
+  padding: 1rem; /* Internal padding */
+  border: 1px solid var(--border-color); /* Border */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: #fff; /* White background */
+}
+
+/* Signature Section Styles */
+.signature-section {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 2rem; /* Space between items */
+  margin: 2rem 0; /* Vertical margins */
+  padding-top: 2rem; /* Padding above */
+  border-top: 1px solid var(--border-color); /* Top border */
+}
+
+/* Style signature wrapper */
+.signature-wrapper {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Stack vertically */
+  gap: 0.5rem; /* Space between elements */
+}
+
+/* Style signature line */
+.signature-line {
+  width: 100%; /* Full width */
+  border-bottom: 2px dotted #333; /* Dotted line */
+  margin: 0.5rem 0; /* Margins */
+}
+
+/* Style report generation timestamp */
+.report-generated {
+  text-align: right; /* Right-align */
+  font-size: 0.9rem; /* Smaller font */
+  color: #666; /* Gray text */
+}
+
+/* Style report footer */
+.report-footer {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space elements */
+  align-items: center; /* Center vertically */
+  font-size: 0.9rem; /* Smaller font */
+  color: #666; /* Gray text */
+  border-top: 1px solid var(--border-color); /* Top border */
+  padding-top: 1rem; /* Padding above */
+}
+
+/* Style confidentiality notice */
+.confidentiality p {
+  margin: 0; /* Remove default margin */
+}
+
+/* Action Buttons Styles */
+.action-buttons {
+  display: flex; /* Flexbox layout */
+  gap: 1rem; /* Space between buttons */
+  margin: 2rem 0; /* Vertical margins */
+  flex-wrap: wrap; /* Wrap on small screens */
+}
+
+/* Style share dropdown container */
+.share-dropdown {
+  position: relative; /* Position for absolute menu */
+}
+
+/* Style share menu */
+.share-menu {
+  position: absolute; /* Position below button */
+  top: 100%; /* Align below */
+  right: 0; /* Align to right */
+  background-color: #fff; /* White background */
+  border: 1px solid var(--border-color); /* Border */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Shadow */
+  display: none; /* Hidden by default */
+  z-index: 100; /* Above other content */
+}
+
+/* Show share menu when active */
+.share-menu.active {
+  display: block;
+}
+
+/* Style share menu options */
+.share-option {
+  display: block; /* Full-width buttons */
+  width: 100%; /* Full width */
+  padding: 0.75rem 1.5rem; /* Padding */
+  text-align: left; /* Left-align text */
+  border: none; /* No border */
+  background: none; /* No background */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.2s; /* Smooth background transition */
+}
+
+/* Hover effect for share options */
+.share-option:hover {
+  background-color: var(--background-color); /* Light background on hover */
+}
+
+/* Print-specific Styles */
+@media print {
+  /* Ensure colors print accurately */
+  * { -webkit-print-color-adjust: exact; }
+  /* Remove margins and padding for body */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fff !important;
+  }
+  /* Set white background for containers */
+  .container,
+  .report-container,
+  .chart-container,
+  .signature-section,
+  .comment-section {
+    background: #fff !important;
+  }
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  /* Stack control panel sections vertically */
+  .control-panel {
+    flex-direction: column;
+  }
+  /* Reduce navbar logo size */
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+  /* Reduce report header title size */
+  .report-header h1 {
+    font-size: 1.5rem;
+  }
+  /* Stack signature section in one column */
+  .signature-section {
+    grid-template-columns: 1fr;
+  }
+}

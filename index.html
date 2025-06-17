@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIMGNN</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <script>
+    // Function to detect mobile devices
+    function isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+      );
+    }
+
+    // Check if device is mobile/tablet and redirect
+    if (isMobileDevice()) {
+      window.location.href = 'notsupported.html';
+    }
+  </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <!-- Logo -->
+      <div class="logo1">
+        <img src="images/mti_Logo.png" alt="Logo" />
+      </div>
+      <div class="logo2">
+        <img src="images/aimgnn_logo.png" alt="Logo" />
+      </div>
+      <div class="logo3">
+        <img src="images/faculty_logo_upscaled.png" alt="Logo" />
+      </div>
+      <!-- Links -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="tutorial.html">Tutorials</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <!-- Get Started Button -->
+      <button class="cta-button" id="get-started-btn">Compose</button>
+    </div>
+  </nav>
+
+  <!-- Gradient Background -->
+  <div class="gradient-bg"></div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/logo.png" alt="Logo" style="width: 280px; vertical-align: middle;">
+      <h1>
+        Create Music with AI
+      </h1>
+      <p>Unleash your creativity with the power of artificial intelligence</p>
+      <!-- Change this -->
+      <button class="cta-button" id="hero-get-started-btn">Compose</button>
+      
+    </div>
+    <div class="scroll-down">
+      <p>Scroll Down</p>
+      <a href="#samples"><img src="images/arrow.png" alt=""></a>
+    </div>
+  </section>
+
+  <!-- Samples Section -->
+  <section class="samples" id="samples">
+    <h2>Samples</h2>
+    <div class="samples-card">
+      <div class="samples-grid">
+        <div class="samples-item">  
+          <img src="images/DALL·E 2025-02-24 01.46.33 - A high-quality close-up of piano keys, emphasizing the glossy surface and fine details of the black and white keys. The perspective highlights the dep.webp" alt="Sample 1">
+          <button class="play-button" data-audio="music\soft-piano-music-272719.mp3"></button>
+          <p class="samples-title">Relaxing Piano</p>
+        </div>
+        <div class="samples-item">
+          <img src="images/Gemini_Generated_Image_ioffdgioffdgioff.jpeg" alt="Sample 2">
+          <button class="play-button" data-audio="music\1749383508867-80s electronic track.wav"></button>
+          <p class="samples-title">80s Electronic track</p>
+        </div>
+        <div class="samples-item">
+          <img src="images/Gemini_Generated_Image_si12txsi12txsi12.jpeg" alt="Sample 3">
+          <button class="play-button" data-audio="music\1749306688806-A dynamic blend of h.wav"></button>
+          <p class="samples-title">Hip-hop and Lo-Fi</p>
+        </div>
+        <div class="samples-item">
+          <img src="images/Gemini_Generated_Image_yjneivyjneivyjne.jpeg" alt="Sample 4">
+          <button class="play-button" data-audio="music\1749314003919-A dynamic blend of h.wav"></button>
+          <p class="samples-title">Hip-hop and orchestral elements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <!-- Swiper Container -->
+    <div class="swiper-container">
+      <!-- Moved Key Features title inside the container -->
+      <h2 class="features-title">Key Features</h2>
+      <div class="swiper-wrapper">
+        <!-- Text to Music Generation Feature -->
+        <div class="swiper-slide">
+          <div class="feature-card">
+            <div class="feature-card-content">
+              <div class="feature-image">
+                <img src="images/openart-8e85491ea69e4395ba248d4e0b46f13d_raw.png" alt="Text to Music">
+              </div>
+              <div class="feature-text">
+                <h3>Text to Music Generation</h3>
+                <p>
+                  Generate music from text prompts using advanced AI algorithms. Turn your ideas into melodies
+                  effortlessly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Generated Music Feature -->
+        <div class="swiper-slide">
+          <div class="feature-card">
+            <div class="feature-card-content">
+              <div class="feature-image">
+                <img src="images/editgeneratedmusic.png" alt="Customize Music">
+              </div>
+              <div class="feature-text">
+                <h3>Edit Generated Music</h3>
+                <p>
+                  Use prompt-based customization features to bridge the gap between your creative vision and the output.
+                  Make the music truly yours!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download & Share Feature -->
+        <div class="swiper-slide">
+          <div class="feature-card">
+            <div class="feature-card-content">
+              <div class="feature-image">
+                <img src="images/download$share(1).png" alt="Download & Share">
+              </div>
+              <div class="feature-text">
+                <h3>Download & Share</h3>
+                <p>
+                  Download your music in high-quality formats and share it with the world. Perfect for creators and
+                  professionals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced Controls Feature -->
+        <div class="swiper-slide">
+          <div class="feature-card">
+            <div class="feature-card-content">
+              <div class="feature-image">
+                <img src="images/advancedcontrols.png" alt="Advanced Controls">
+              </div>
+              <div class="feature-text">
+                <h3>Advanced Controls</h3>
+                <p>
+                  Fine-tune your music with advanced controls for tempo, pitch, and more. Perfect your sound with
+                  precision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Navigation Buttons -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section  -->
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What is this platform for?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          This platform is designed for composers and audio editors to collaborate on creating and generating music 
+          samples. Composers can generate music based on selected instruments, genres, and settings, while 
+          audio editors assist in refining and implementing the generated samples.
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3> Who can use this platform?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          The platform is intended for composers and audio editors. Composers can generate and 
+          download music samples and audio editors can review and edit generated samples. 
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>What roles are available on the platform?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          There are two main roles: Composer (for generating and downloading music samples) and Audio Editor (for 
+          reviewing and editing generated samples). Admins manage the system and content. 
+        </p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Will I get a copyright claim for using music from AIMGNN?</h3>
+          <button class="toggle-button"></button>
+        </div>
+        <p class="faq-answer">
+          Ideally, you should not get a copyright claim for using music created with AIMGNN.
+        </p>
+      </div>
+    </div>
+    <div class="faq-button-container">
+      <a href="faq.html" class="faq-button">More FAQs</a>
+    </div>
+  </section> 
+  
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+   
+      <div class="footer-links">
+        <div>
+          <h3>PRODUCT</h3>
+          <ul>
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Artists</a></li>
+            <li><a href="#">Use Cases</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">Augment</a></li>
+            <li><a href="#">AI Music Search</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>COMPANY</h3>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>LEGAL</h3>
+          <ul>
+            <li><a href="#">Terms of use</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Copyright Claim</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-icons">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-discord"></i>
+        <i class="fas fa-share-alt" id="share-icon"></i>
+      </div>
+      <p>AIMGNN is an AI music generator that can create music for your content with multimodal prompts.</p>
+    </div>
+  </footer>
+
+  <!-- Floating GIF -->
+  <div class="floating-gif" id="floating-gif">
+    <img src="gifs/bfR.gif" alt="Floating GIF">
+  </div>
+  <!-- Remove this button -->
+  <!-- <button id="theme-toggle" class="floating-theme-button">
+    <i class="fas fa-sun" id="theme-icon"></i>
+  </button> -->
+  
+</body>
+</html>
+
+
+
+

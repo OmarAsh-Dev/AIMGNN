@@ -1,0 +1,174 @@
+/* General Styles */
+
+html,
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+input,
+textarea,
+[contenteditable] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+ :root {
+    --color-bg1: #212529;
+    --color-bg2: #1a1a2e;
+    --color-bg3: #22272d;
+    --main-color: #070f26;
+    --alt-main-color: #131A26;
+    --third-color: #fe841c;
+    --xox-color: #ad5305;
+}
+
+
+/* Gradient Background */
+
+.gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background: linear-gradient(to bottom, var(--color-bg1), var(--color-bg2), var(--color-bg3));
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+
+/* Main Content */
+
+.account-info {
+    margin-left: 95px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover~.account-info {
+    margin-left: 250px;
+}
+
+
+/* Form Styles */
+
+.account-form,
+.channels,
+.Change-Password {
+    padding: 10px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.account-info .channels {
+    border-block: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.account-info .channels p {
+    color: #bbb;
+}
+
+.account-info h3 {
+    margin-top: 0;
+    font-size: 32px;
+    color: #fff;
+}
+
+.account-info .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #bbb;
+}
+
+.account-info :where(.input-box input) {
+    position: relative;
+    height: 50px;
+    width: 95%;
+    outline: none;
+    font-size: 1rem;
+    color: #fe841c;
+    background-color: var(--color-bg1);
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 0 15px;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 #fe841c;
+    border-color: #ad5305;
+}
+
+.account-info .btn {
+    margin: 10px auto;
+    padding-right: 5px;
+    display: flex;
+    justify-content: end;
+}
+
+.account-info button {
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    background: #fe841c;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.logout {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#logout-button:hover {
+    border: 1px solid #fe841c;
+    transform: scale(1.05);
+}

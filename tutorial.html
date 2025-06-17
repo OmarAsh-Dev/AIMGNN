@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials - AIMGNN</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/sidebar.css">
+
+  <style>
+    :root {
+      --sidebar-width: 250px;
+      --content-offset: 95px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+ 
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #212529, #1a1a2e);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .content-wrapper {
+      margin-left: 0px;
+      padding: 30px 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar:hover + .content-wrapper {
+      margin-left: var(--sidebar-width);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar:hover ~ .content-wrapper h1 {
+      transform: translateX(var(--content-offset));
+    }
+
+    .video-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(21, 19, 19, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar:hover ~ .content-wrapper .video-container {
+      transform: translateX(var(--content-offset));
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="images/aimgnn_logo.png" alt="Logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+      <a href="editor.html"><i class="fas fa-edit"></i> <span>Editor</span></a>
+      <a href="gallery.html"><i class="fa-solid fa-images"></i></i><span>Gallery</span></a>
+      <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+    </div>
+
+    <div class="footer">
+      <a href="login.html"><div class="user-info">
+     <i class="fas fa-user-circle"></i>
+        <span>Guest</span> 
+      </div></a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <h1>Tutorial</h1>
+
+    <div class="video-container">
+      <div class="video-frame">
+        <iframe 
+          src="" 
+          title="AI Music Generation Tutorial"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script type="module" src="js/app.js"></script>
+
+  <script>
+    // Function to detect mobile devices
+    function isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+      );
+    }
+
+    // Check if device is mobile/tablet and redirect
+    if (isMobileDevice()) {
+      window.location.href = 'notsupported.html';
+    }
+  </script>
+</body>
+
+</html>

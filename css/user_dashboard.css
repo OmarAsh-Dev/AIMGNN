@@ -1,0 +1,1149 @@
+/* Import root variables */
+
+:root {
+    --color-bg1: #212529;
+    --color-bg2: #1a1a2e;
+    --color-bg3: #22272d;
+    --main-color: #070f26;
+    --alt-main-color: #131A26;
+    --third-color: #cb3cff;
+    --xox-color: #1814f3;
+}
+
+
+/* General Styles */
+
+html,
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: auto;
+}
+
+
+/* Gradient Background */
+
+.gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background: linear-gradient(to bottom, var(--color-bg1), var(--color-bg2));
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+/* Main Content */
+
+.main-content {
+    margin-left: 95px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover~.main-content {
+    margin-left: 250px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Top Navigation */
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(var(--gradient-degree), var(--color-bg1), var(--color-bg2));
+    backdrop-filter: blur(10px);
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.nav {
+    transition: color 0.3s;
+    margin-left: 45%;
+}
+
+.nav a {
+    color: #fe841c;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a.active {
+    color: #fe841c;
+}
+
+
+/* Content Container */
+
+.content-container {
+    background: linear-gradient(180deg, #131A26, #131F33);
+    backdrop-filter: blur(10px);
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+}
+
+
+/* Table Styles */
+
+.composition-table,
+.assigned-pieces,
+.programmer-pieces {
+    opacity: 1;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.composition-table th,
+.composition-table td,
+.assigned-pieces th,
+.assigned-pieces td,
+.programmer-pieces th,
+.programmer-pieces td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.composition-table th,
+.assigned-pieces th,
+.programmer-pieces th {
+    color: #fe841c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(254, 132, 28, 0.05);
+    position: relative;
+}
+
+.composition-table th:not(:last-child)::after,
+.assigned-pieces th:not(:last-child)::after,
+.programmer-pieces th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(254, 132, 28, 0.2);
+}
+
+.composition-table tr,
+.assigned-pieces tr,
+.programmer-pieces tr {
+    transition: all 0.3s ease;
+}
+
+.composition-table tr:hover,
+.assigned-pieces tr:hover,
+.programmer-pieces tr:hover {
+    background: rgba(254, 132, 28, 0.05);
+}
+
+.composition-table tr:hover td,
+.assigned-pieces tr:hover td,
+.programmer-pieces tr:hover td {
+    color: #ffffff;
+}
+
+
+/* Button Styles */
+
+.create-button {
+    padding: 10px 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fe841c;
+    font-size: 16px;
+    border: 1px solid #fe841c;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.create-button a {
+    text-decoration: none;
+    color: #fe841c;
+    font-size: 16px;
+}
+
+.create-button:hover {
+    scale: 1.05;
+}
+
+.view-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #bbb;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.view-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fe841c;
+}
+
+.view-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+/* Action Buttons */
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+tr:hover .action-buttons {
+    opacity: 1;
+}
+
+.action-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bbb;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.action-button:hover {
+    color: #fe841c;
+    background: rgba(254, 132, 28, 0.1);
+    border-color: rgba(254, 132, 28, 0.2);
+    transform: translateY(-2px);
+}
+
+.title-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+}
+
+.title-cell i {
+    color: #fe841c;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+
+/* Grid View Styles */
+
+.composition-table.grid-view,
+.assigned-pieces.grid-view,
+.programmer-pieces.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    transition: opacity 0.2s ease;
+}
+
+.composition-table.grid-view thead,
+.assigned-pieces.grid-view thead,
+.programmer-pieces.grid-view thead {
+    display: none;
+}
+
+.composition-table.grid-view tbody,
+.assigned-pieces.grid-view tbody,
+.programmer-pieces.grid-view tbody {
+    display: contents;
+}
+
+.composition-table.grid-view tbody tr,
+.assigned-pieces.grid-view tbody tr,
+.programmer-pieces.grid-view tbody tr {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(19, 26, 38, 0.95), rgba(19, 31, 51, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    min-width: 300px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.composition-table.grid-view tbody tr:hover,
+.assigned-pieces.grid-view tbody tr:hover,
+.programmer-pieces.grid-view tbody tr:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(254, 132, 28, 0.15);
+    border-color: rgba(254, 132, 28, 0.3);
+}
+
+.composition-table.grid-view td,
+.assigned-pieces.grid-view td,
+.programmer-pieces.grid-view td {
+    border: none;
+    padding: 10px 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.composition-table.grid-view td:not(:first-child):before,
+.assigned-pieces.grid-view td:not(:first-child):before,
+.programmer-pieces.grid-view td:not(:first-child):before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 12px;
+    color: #fe841c;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Add a subtle gradient overlay to cards */
+.composition-table.grid-view tbody tr::before,
+.assigned-pieces.grid-view tbody tr::before,
+.programmer-pieces.grid-view tbody tr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #fe841c, #ff4f7e);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.composition-table.grid-view tbody tr:hover::before,
+.assigned-pieces.grid-view tbody tr:hover::before,
+.programmer-pieces.grid-view tbody tr:hover::before {
+    opacity: 1;
+}
+
+
+/* Active view button state */
+
+.view-button.active {
+    color: #fe841c;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Smooth transitions */
+
+.composition-table:not(.grid-view),
+.assigned-pieces:not(.grid-view),
+.programmer-pieces:not(.grid-view) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #bbb;
+    background: linear-gradient(180deg, rgba(19, 26, 38, 0.95), rgba(19, 31, 51, 0.95));
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.composition-table tr,
+.assigned-pieces tr,
+.programmer-pieces tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(19, 26, 38, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(254, 132, 28, 0.2);
+    width: 300px;
+    /* Set a fixed width for consistency */
+}
+
+.create-menu input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+}
+
+.create-menu input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.create-menu button {
+    padding: 10px 25px;
+    background: rgba(254, 132, 28, 0.2);
+    border: 1px solid #fe841c;
+    color: #fe841c;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.create-menu button:hover {
+    background: #fe841c;
+    color: #131A26;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    /* Match parent width */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+}
+
+.loading-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(254, 132, 28, 0.2);
+    border-radius: 50%;
+    border-top-color: #fe841c;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-state p {
+    color: #fe841c;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.options-menu {
+    position: absolute;
+    background: linear-gradient(to bottom, var(--color-bg1), var(--color-bg2));
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0.5rem 0;
+}
+
+.option-item {
+    color: #fe841c;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+.option-item:hover {
+    background: #6258582f;
+}
+
+.option-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.action-buttons {
+    position: relative;
+}
+
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.share-content {
+    background: linear-gradient(180deg, var(--color-bg1), var(--color-bg2));
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    color: #ffffff;
+}
+
+/* Scrollbar styles for assign modal */
+.share-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.share-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.share-content::-webkit-scrollbar-thumb {
+    background: #fe841c;
+    border-radius: 10px;
+}
+
+.share-content::-webkit-scrollbar-thumb:hover {
+    background: #ff9a3c;
+}
+
+/* For Firefox */
+.share-content {
+    scrollbar-width: thin;
+    scrollbar-color: #fe841c rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure the user list has a max height and scrolls */
+.share-content .user-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.share-content .user-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.share-content .user-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.share-content .user-list::-webkit-scrollbar-thumb {
+    background: #fe841c;
+    border-radius: 10px;
+}
+
+.share-content .user-list::-webkit-scrollbar-thumb:hover {
+    background: #ff9a3c;
+}
+
+.share-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.share-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab-button {
+    padding: 8px 15px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tab-button.active {
+    background: #fe841c;
+    color: white;
+}
+
+.tab-pane {
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 0px solid #d86f13;
+}
+
+.assign-button {
+    padding: 5px 10px;
+    background: #fe841c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.logout {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#logout-button:hover {
+    border: 1px solid #fe841c;
+    transform: scale(1.05);
+}
+
+.rename-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rename-modal {
+    background: linear-gradient(180deg, var(--color-bg1), var(--color-bg2)) !important; 
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 32px 28px 24px 28px;
+    min-width: 340px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+    animation: fadeInScale 0.25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.rename-modal input[type="text"] {
+    width: 90%;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 22px;
+    outline: none;
+    transition: border 0.2s;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rename-modal input[type="text"]:focus {
+    border: 1.5px solid #fe841c;
+}
+
+.rename-modal h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #ffffff;
+    text-align: left !important;
+}
+
+.rename-modal .modal-actions {
+    display: flex;
+    gap: 14px;
+    width: 100%;
+    justify-content: center;
+}
+
+.rename-actions {
+    display: flex;
+    gap: 14px;
+    width: 100%;
+    justify-content: center !important;
+}
+
+.rename-modal button {
+    padding: 8px 22px;
+    border: none;
+    width: 30%;
+    border-radius: 7px;
+    background: #fe841c;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.rename-modal button.cancel {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.rename-modal button:hover {
+    background: #d86f13;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Floating Notes Animation */
+.music-note {
+    position: fixed;
+    font-size: 28px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: color 0.5s ease;
+    text-shadow: 0 0 5px currentColor;
+    will-change: transform, opacity, color;
+    bottom: -20px; /* Start below the screen */
+}
+
+/* Different animation patterns */
+.pattern-spiral {
+    animation: floatSpiral 5s ease-in-out forwards;
+}
+
+.pattern-zigzag {
+    animation: floatZigzag 5s ease-in-out forwards;
+}
+
+.pattern-circle {
+    animation: floatCircle 5s ease-in-out forwards;
+}
+
+.pattern-wave {
+    animation: floatWave 5s ease-in-out forwards;
+}
+
+@keyframes floatSpiral {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(0, -100px) rotate(120deg) scale(1.1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(var(--moveX), calc(var(--moveY) * 0.5)) rotate(240deg) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(calc(var(--moveX) * -0.5), calc(var(--moveY) * 0.9)) rotate(480deg) scale(0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, var(--moveY)) rotate(720deg) scale(0.8);
+    }
+}
+
+@keyframes floatZigzag {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(50px, -100px) scale(1.1);
+    }
+    30% {
+        transform: translate(-50px, calc(var(--moveY) * 0.3)) scale(0.9);
+    }
+    50% {
+        transform: translate(50px, calc(var(--moveY) * 0.5)) scale(1.1);
+    }
+    70% {
+        transform: translate(-50px, calc(var(--moveY) * 0.7)) scale(0.9);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(50px, calc(var(--moveY) * 0.9)) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, var(--moveY)) scale(0.8);
+    }
+}
+
+@keyframes floatCircle {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(0, -100px) rotate(90deg) scale(1.1);
+    }
+    30% {
+        transform: translate(50px, calc(var(--moveY) * 0.3)) rotate(180deg) scale(0.9);
+    }
+    50% {
+        transform: translate(0, calc(var(--moveY) * 0.5)) rotate(270deg) scale(1.1);
+    }
+    70% {
+        transform: translate(-50px, calc(var(--moveY) * 0.7)) rotate(360deg) scale(0.9);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(0, calc(var(--moveY) * 0.9)) rotate(450deg) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, var(--moveY)) rotate(540deg) scale(0.8);
+    }
+}
+
+@keyframes floatWave {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(0, -100px) scale(1.1);
+    }
+    30% {
+        transform: translate(30px, calc(var(--moveY) * 0.3)) rotate(var(--rotation)) scale(0.9);
+    }
+    50% {
+        transform: translate(-30px, calc(var(--moveY) * 0.5)) rotate(calc(var(--rotation) * 2)) scale(1.1);
+    }
+    70% {
+        transform: translate(30px, calc(var(--moveY) * 0.7)) rotate(calc(var(--rotation) * 3)) scale(0.9);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(-30px, calc(var(--moveY) * 0.9)) rotate(calc(var(--rotation) * 4)) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, var(--moveY)) rotate(calc(var(--rotation) * 5)) scale(0.8);
+    }
+}
+
+/* Note colors */
+.note-colors {
+    /* Warm colors */
+    --color1: #fe841c;  /* Orange */
+    --color2: #ff4f7e;  /* Pink */
+    --color3: #ff0055;  /* Hot Pink */
+    --color4: #ff3300;  /* Bright Red */
+    --color5: #ff9500;  /* Golden Orange */
+    
+    /* Cool colors */
+    --color6: #00ffdd;  /* Cyan */
+    --color7: #00ff88;  /* Spring Green */
+    --color8: #4158D0;  /* Royal Blue */
+    --color9: #1e90ff;  /* Dodger Blue */
+    --color10: #7b68ee; /* Medium Slate Blue */
+    
+    /* Vibrant colors */
+    --color11: #ff1493; /* Deep Pink */
+    --color12: #00ff00; /* Lime */
+    --color13: #ff00ff; /* Magenta */
+    --color14: #ffff00; /* Yellow */
+    --color15: #00ffff; /* Aqua */
+    
+    /* Neon colors */
+    --color16: #39ff14; /* Neon Green */
+    --color17: #ff2d95; /* Neon Pink */
+    --color18: #ff9933; /* Neon Orange */
+    --color19: #ff3377; /* Neon Red */
+    --color20: #bf00ff; /* Electric Purple */
+}
+
+.rename-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.format-modal {
+    background: linear-gradient(180deg, var(--color-bg1), var(--color-bg2));
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    color: #ffffff;
+}
+
+.format-modal h3 {
+    margin: 0 0 1.5em 0;
+    font-size: 1.2em;
+    text-align: center;
+    color: #ffffff;
+}
+
+.format-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 1.5em;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.format-options::-webkit-scrollbar {
+    width: 8px;
+}
+
+.format-options::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.format-options::-webkit-scrollbar-thumb {
+    background: #fe841c;
+    border-radius: 10px;
+}
+
+.format-options::-webkit-scrollbar-thumb:hover {
+    background: #ff9a3c;
+}
+
+.format-options {
+    scrollbar-width: thin;
+    scrollbar-color: #fe841c rgba(255, 255, 255, 0.1);
+}
+
+.format-option {
+    padding: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.format-option:hover {
+    background: rgba(254, 132, 28, 0.2);
+    border-color: #fe841c;
+}
+
+.format-option i {
+    font-size: 1.2em;
+    color: #fe841c;
+}
+
+.format-option .format-details {
+    flex: 1;
+}
+
+.format-option .format-name {
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.3em;
+}
+
+.format-option .format-desc {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.format-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.format-cancel {
+    padding: 0.5em 1.3em;
+    border: 1px solid #fe841c;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fe841c;
+    transition: all 0.2s;
+}
+
+.format-cancel:hover {
+    background: #fe841c;
+    color: var(--color-bg1);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loading-content {
+    background: linear-gradient(180deg, var(--color-bg1), var(--color-bg2));
+    padding: 2em;
+    border-radius: 8px;
+    text-align: center;
+    color: #ffffff;
+    border: 1px solid #fe841c;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(254, 132, 28, 0.3);
+    border-radius: 50%;
+    border-top-color: #fe841c;
+    margin: 0 auto 1em;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-content p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+/* Add subtle animation for table rows */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.composition-table tbody tr,
+.assigned-pieces tbody tr,
+.programmer-pieces tbody tr {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Add animation delay for each row */
+.composition-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.composition-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.composition-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.composition-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.composition-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+.assigned-pieces tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.assigned-pieces tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.assigned-pieces tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.assigned-pieces tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.assigned-pieces tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+.programmer-pieces tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.programmer-pieces tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.programmer-pieces tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.programmer-pieces tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.programmer-pieces tbody tr:nth-child(5) { animation-delay: 0.5s; }

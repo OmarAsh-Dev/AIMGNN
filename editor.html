@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIMGNN</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+</head>
+
+<body>
+  <script>
+    // Function to detect mobile devices
+    function isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+      );
+    }
+
+    // Check if device is mobile/tablet and redirect
+    if (isMobileDevice()) {
+      window.location.href = 'notsupported.html';
+    }
+  </script>
+  <div class="gradient-bg"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="images/aimgnn_logo.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+      <a href="generate.html"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Generate</span></a>
+      <a href="gallery.html"><i class="fa-solid fa-images"></i> <span>Gallery</span></a>
+      <a href="tutorial.html"><i class="fas fa-video"></i> <span>Tutorials</span></a>
+    </div>
+    <div class="footer">
+    </div>
+  </div>
+  <div id="loading" style="display: none;">
+    <div class="spinner"></div>
+    <p>Loading file...</p>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container" id="mainContainer">
+    <!-- Right Panel - Visualization and Text Input -->
+    <div class="right-panel">
+      <div class="fixed-header">
+        <h1>Music Editing with Text Prompts</h1>
+
+        <!-- Waveform Visualization -->
+        <div id="waveformContainer">
+          <canvas id="canvas"></canvas>
+          <div id="timeMarkers"></div>
+          <div id="progress"></div>
+          <div id="selectionOverlay"></div>
+        </div>
+
+        <!-- Frequency Spectrum Visualization -->
+        <div id="fftContainer">
+          <canvas id="fftCanvas"></canvas>
+        </div>
+
+             <!-- Playback Controls -->
+             <div class="playback-controls">
+              <div class="control-group">
+                <button id="playPauseBtn" disabled>Play</button>
+                <button id="stopBtn" disabled>Stop</button>
+                <button id="muteBtn" disabled>Mute</button>
+              <!--  <button id="seekBackwardBtn" disabled><i class="fas fa-backward"></i> -5s</button>
+                <button id="seekForwardBtn" disabled><i class="fas fa-forward"></i> +5s</button> -->
+                <button id="resetZoomBtn" disabled>Reset Zoom</button>
+                <button id="exportBtn" disabled>Export Waveform</button>
+                <button id="undoBtn" disabled>Undo</button>
+                <button id="redoBtn" disabled>Redo</button>
+                <button id="applyChangesBtn">Apply <i class="fa-solid fa-cash-register"></i></button>
+                <button id="saveVersionBtn">Save <i class="fa-solid fa-floppy-disk"></i></button>
+              </div>
+            </div>
+
+    
+      </div>
+
+      <div class="content-wrapper">
+            <!-- Utility Controls -->
+            <div class="utility-controls-wrapper">
+              <div class="utility-controls">
+                <button id="uploadBtn">Upload Audio <i class="fas fa-upload"></i></button>
+                <button id="downloadBtn" disabled>Download Audio <i class="fas fa-download"></i></button>
+               <!-- <button id="fullscreenBtn">Fullscreen <i class="fas fa-expand"></i></button> -->
+              </div>
+            </div>
+        <!-- Text Input Interface -->
+        <div class="generate-form">
+          <textarea id="prompt-textarea" placeholder="Describe your music edits here..."></textarea>
+          <div class="group-generate">
+            <button class="btn add-audio">Add Audio <i class="fa-solid fa-plus"></i></button>
+            <button class="btn compose">Process <i class="fa-solid fa-arrow-right"></i></button>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left Panel - Audio Controls -->
+    <div class="left-panel">
+      <div class="control-section">
+        <h3 class="section-title">Channels</h3>
+        <div class="control-group" id="channelControls">
+          <!-- Channel toggles will be dynamically inserted here -->
+        </div>
+      </div>
+      <input type="file" id="audioInput" accept="audio/*" style="display: none;" />
+      
+
+      <div class="controls-grid">
+        <!-- Playback Parameters -->
+        <div class="control-section">
+          <h3 class="section-title">Playback</h3>
+          <div class="control-group">
+            <label>Speed: <span id="playbackRateValue">1.0</span>x</label>
+            <input type="range" id="playbackRate" min="0.5" max="2" step="0.1" value="1">
+
+            <label>Pitch: <span id="pitchValue">0</span> cents</label>
+            <input type="range" id="pitch" min="-1200" max="1200" step="100" value="0">
+
+            <label>Volume: <span id="volumeValue">100</span>%</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="control-section">
+          <h3 class="section-title">Filters</h3>
+          <div class="control-group">
+            <label>LPF: <span id="filterValue">20000</span> Hz</label>
+            <input type="range" id="filter" min="20" max="20000" step="100" value="20000">
+
+            <label>Pan: <span id="panValue">0</span></label>
+            <input type="range" id="panning" min="-1" max="1" step="0.1" value="0">
+
+            <label>Zoom: <span id="zoomValue">100</span>%</label>
+            <input type="range" id="zoom" min="10" max="500" value="100" step="10">
+          </div>
+        </div>
+
+        <!-- Visual Settings -->
+        <div class="control-section">
+          <h3 class="section-title">Visuals</h3>
+          <div class="control-group">
+            <label>Waveform Color: <input type="color" id="waveformColor" value="#fe841c"></label>
+            <label>FFT Color: <input type="color" id="fftColor" value="#00ff00"></label>
+          </div>
+        </div>
+
+        <!-- Effects Sections (Simplified for brevity) -->
+        <!-- In the Reverb section -->
+        <div class="control-section">
+          <h3 class="section-title">Reverb</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="reverbToggle"> Enable</label>
+            <label>Mix: <span id="reverbMixValue">0</span></label>
+            <input type="range" id="reverbMix" min="0" max="1" step="0.01" value="0">
+            <!-- Add Decay control -->
+            <label>Decay: <span id="reverbDecayValue">2.0</span>s</label>
+            <input type="range" id="reverbDecay" min="0.1" max="10" step="0.1" value="2.0">
+          </div>
+        </div>
+        
+        <!-- In the Delay section -->
+        <div class="control-section">
+          <h3 class="section-title">Delay</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="delayToggle"> Enable</label>
+            <label>Time: <span id="delayTimeValue">0.3</span>s</label>
+            <input type="range" id="delayTime" min="0" max="2" step="0.01" value="0.3">
+            <!-- Add Feedback and Mix controls -->
+            <label>Feedback: <span id="delayFeedbackValue">30</span>%</label>
+            <input type="range" id="delayFeedback" min="0" max="0.5" step="0.01" value="0.3">
+          </div>
+        </div>
+        
+        <!-- Chorus / Flanger Section -->
+        <div class="control-section">
+          <h3 class="section-title">Chorus / Flanger</h3>
+          <div class="control-group">
+            <label>Type:
+              <select id="chorusType">
+                <option value="chorus">Chorus</option>
+                <option value="flanger">Flanger</option>
+              </select>
+            </label>
+            <label>Rate: <span id="chorusRateValue">0.25</span> Hz</label>
+            <input type="range" id="chorusRate" min="0.1" max="5" step="0.01" value="0.25">
+            <label>Depth: <span id="chorusDepthValue">0.003</span> s</label>
+            <input type="range" id="chorusDepth" min="0.001" max="0.01" step="0.0001" value="0.003">
+            <label>Mix: <span id="chorusMixValue">0</span></label>
+            <input type="range" id="chorusMix" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <!-- Compressor Section -->
+        <div class="control-section">
+          <h3 class="section-title">Compressor</h3>
+          <div class="control-group">
+            <label>Threshold: <span id="compressorThresholdValue">0</span> dB</label>
+            <input type="range" id="compressorThreshold" min="-60" max="0" step="1" value="0">
+            <label>Ratio: <span id="compressorRatioValue">1</span></label>
+            <input type="range" id="compressorRatio" min="1" max="20" step="1" value="1">
+            <label>Attack: <span id="compressorAttackValue">0</span> s</label>
+            <input type="range" id="compressorAttack" min="0" max="1" step="0.001" value="0">
+            <label>Release: <span id="compressorReleaseValue">0</span> s</label>
+            <input type="range" id="compressorRelease" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <!-- Bitcrusher Section -->
+        <!--<div class="control-section">
+          <h3 class="section-title">Bitcrusher</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="bitcrusherToggle"> Enable</label>
+            <label>Bit Depth: <span id="bitDepthValue">16</span> bits</label>
+            <input type="range" id="bitDepth" min="1" max="16" step="1" value="16">
+            <label>Sample Rate: <span id="sampleRateValue">44100</span> Hz</label>
+            <input type="range" id="sampleRate" min="1000" max="44100" step="100" value="44100">
+            <label>Mix: <span id="bitcrusherMixValue">0</span></label>
+            <input type="range" id="bitcrusherMix" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>-->
+
+        <!-- Equalizer Section -->
+        <div class="control-section">
+          <h3 class="section-title">3-Band EQ</h3>
+          <div class="control-group">
+            <label>Low (100Hz): <span id="eqLowValue">0</span> dB</label>
+            <input type="range" id="eqLow" min="-12" max="12" step="0.1" value="0">
+            <label>Mid (1kHz): <span id="eqMidValue">0</span> dB</label>
+            <input type="range" id="eqMid" min="-12" max="12" step="0.1" value="0">
+            <label>High (10kHz): <span id="eqHighValue">0</span> dB</label>
+            <input type="range" id="eqHigh" min="-12" max="12" step="0.1" value="0">
+          </div>
+        </div>
+
+        <!-- Tremolo Section -->
+        <div class="control-section">
+          <h3 class="section-title">Tremolo</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="tremoloToggle"> Enable</label>
+            <label>Rate: <span id="tremoloRateValue">4</span> Hz</label>
+            <input type="range" id="tremoloRate" min="0.1" max="20" step="0.1" value="4">
+            <label>Depth: <span id="tremoloDepthValue">0</span></label>
+            <input type="range" id="tremoloDepth" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <!-- Phaser Section -->
+        <!--<div class="control-section">
+          <h3 class="section-title">Phaser</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="phaserToggle"> Enable</label>
+            <label>Rate: <span id="phaserRateValue">0.5</span> Hz</label>
+            <input type="range" id="phaserRate" min="0.1" max="8" step="0.1" value="0.5">
+            <label>Depth: <span id="phaserDepthValue">0</span></label>
+            <input type="range" id="phaserDepth" min="0" max="1" step="0.01" value="0">
+            <label>Feedback: <span id="phaserFeedbackValue">0</span></label>
+            <input type="range" id="phaserFeedback" min="0" max="0.9" step="0.01" value="0">
+          </div>
+        </div> -->
+
+        <!-- Gate Section -->
+       <!--<div class="control-section">
+          <h3 class="section-title">Noise Gate</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="gateToggle"> Enable</label>
+            <label>Threshold: <span id="gateThresholdValue">-60</span> dB</label>
+            <input type="range" id="gateThreshold" min="-100" max="0" step="1" value="-60">
+            <label>Attack: <span id="gateAttackValue">0.01</span> s</label>
+            <input type="range" id="gateAttack" min="0.001" max="1" step="0.001" value="0.01">
+            <label>Release: <span id="gateReleaseValue">0.1</span> s</label>
+            <input type="range" id="gateRelease" min="0.001" max="1" step="0.001" value="0.1">
+          </div>
+        </div>--> 
+
+        <!-- Stereo Widener Section -->
+        <div class="control-section">
+          <h3 class="section-title">Stereo Widener</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="stereoWidenerToggle"> Widener</label>
+            <label>Width: <span id="stereoWidenerValue">0</span></label>
+            <input type="range" id="stereoWidener" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <!-- Dynamic Effects Section -->
+        <div class="control-section">
+          <h3 class="section-title">Dynamic Effects</h3>
+          <div class="control-group">
+            <label><input type="checkbox" id="automationToggle"> Automation</label>
+          </div>
+        </div>
+
+
+        <!-- Loop Controls Section -->
+        <div class="control-section">
+          <h3 class="section-title">Loop</h3>
+          <div class="control-group">
+            <button id="loopToggle">Loop: <span id="loopStatus">Off</span></button>
+          </div>
+        </div>
+
+        <!-- Selection Controls Section -->
+        <div class="control-section">
+          <h3 class="section-title">Selection</h3>
+          <div class="control-group">
+            <button id="toggleSelectBtn">Select Region</button>
+            <div id="selectionInfo"></div>
+            <button id="trimBtn" disabled>Trim</button>
+          </div>
+        </div>
+
+        <!-- Volume Meter Section -->
+        <div class="control-section">
+          <h3 class="section-title">Volume Meter</h3>
+          <div class="control-group">
+            <div id="volumeMeter">
+              <div class="level"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Change this line at the bottom of your file -->
+  <script type="module" src="js/editor.js"></script>
+  <script src="js/help.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Report Page</title>
+  <link rel="stylesheet" href="css/systemreports.css" />
+  <!-- Import Chart.js, chartjs-plugin-datalabels, and html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="user_dashboard.html"><span class="navbar-logo">Admin Report Page</span></a>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <!-- Top Row: Report Generation and Query Management Sections -->
+    <div class="top-row">
+      <!-- Report Generation Section -->
+      <div class="control-panel" data-title="Control Panel">
+        <div class="date-section">
+          <input type="date" id="startDate" class="date-picker" />
+          <input type="date" id="endDate" class="date-picker" />
+          <select id="datePresets" class="dropdown">
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+            <option value="quarter">This Quarter</option>
+            <option value="year">This Year</option>
+          </select>
+        </div>
+        <!-- Custom Dropdown for Predefined Queries -->
+        <div class="custom-dropdown">
+          <button id="customDropdownBtn" class="dropdown-btn">Select Predefined Query</button>
+          <div id="customDropdownContent" class="dropdown-content"></div>
+        </div>
+        <!-- Query Input for Custom Queries with Simple Queries Icon -->
+        <div class="query-input-wrapper">
+          <input type="text" id="queryInput" class="query-input" placeholder="Enter custom query here..." />
+          <button id="simpleQueriesIcon" class="simple-queries-icon" title="Simple Queries">📋</button>
+          <div id="simpleQueries" class="simple-queries">
+            <ul>
+              <li data-query="select * from Users">Select * from Users</li>
+              <li data-query="select * from Composer">Select * from Composer</li>
+              <li data-query="select * from MusicPiece">Select * from MusicPiece</li>
+              <li data-query="select * from Gallery">Select * from Gallery</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Report Type Dropdown and Generate Button -->
+        <select id="reportType" class="dropdown">
+          <option value="table">Table View</option>
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+        <button onclick="generateReport()" class="btn generate-btn">
+          <i class="icon">📊</i> Generate Report
+        </button>
+      </div>
+      
+      <!-- Query Management Section -->
+      <div class="manage-queries" data-title="Manage Queries">
+        <div class="crud-controls">
+          <div class="radio-group">
+            <label><input type="radio" name="crudOperation" value="add" checked> Add</label>
+            <label><input type="radio" name="crudOperation" value="update"> Update</label>
+            <label><input type="radio" name="crudOperation" value="delete"> Delete</label>
+          </div>
+          <div id="crudFields">
+            <div id="fieldQueryId" class="field-group">
+              <label for="updateQueryId" id="labelUpdateQueryId" style="display:block;">Query ID:</label>
+              <input type="number" id="updateQueryId" placeholder="Enter Query ID" style="display:block;" />
+              <label for="deleteQueryId" id="labelDeleteQueryId" style="display:none;">Query ID:</label>
+              <input type="number" id="deleteQueryId" placeholder="Enter Query ID" style="display:none;" />
+            </div>
+            <div id="fieldQueryName" class="field-group">
+              <label for="addQueryName">Query Name:</label>
+              <input type="text" id="addQueryName" placeholder="Enter Query Name" required />
+              <label for="updateQueryName" style="display:none;">Query Name:</label>
+              <input type="text" id="updateQueryName" placeholder="Enter Query Name" style="display:none;" required />
+            </div>
+            <div id="fieldQueryText" class="field-group">
+              <label for="addQueryText">Query Text:</label>
+              <textarea id="addQueryText" placeholder="Enter SQL Query here..." required></textarea>
+              <label for="updateQueryText" style="display:none;">Query Text:</label>
+              <textarea id="updateQueryText" placeholder="Enter SQL Query here..." style="display:none;" required></textarea>
+            </div>
+            <div id="fieldQueryCategory" class="field-group">
+              <label for="addQueryCategory">Category:</label>
+              <select id="addQueryCategory" required>
+                <option value="Composer Reports">Composer Reports</option>
+                <option value="Audio Engineer Reports">Audio Engineer Reports</option>
+                <option value="Programmer Reports">Programmer Reports</option>
+                <option value="Admin Reports">Admin Reports</option>
+                <option value="Time-based and Trends Reports">Time-based and Trends Reports</option>
+                <option value="Combined/Network Reports">Combined/Network Reports</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+          </div>
+          <button onclick="processCrudOperation()" class="btn submit-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Report Section -->
+    <div id="reportContainer" class="report-container">
+      <div class="report-header">
+        <div class="logo-container">
+          <div class="logo left-logo">
+            <img src="images/Picture1.png" alt="Logo 2" class="report-logo">
+          </div>
+          <div class="logo center-logo">
+            <img src="images/Picture3.png" alt="Logo 3" class="report-logo">
+          </div>
+          <div class="logo right-logo">
+            <img src="images/Picture2.png" alt="Logo 1" class="report-logo">
+          </div>
+        </div>
+        <div class="title-section">
+          <p class="sub-title">AI MGNN</p>
+          <h1 id="reportTitle" contenteditable="true">AI MGNN System Report</h1>
+        </div>
+      </div>
+      <div id="reportContent" class="report-content"></div>
+      <div id="chartContainer" class="chart-container">
+        <canvas id="reportChart"></canvas>
+      </div>
+      <div class="comment-section">
+        <div class="comment-label">Comments:</div>
+        <div class="comment-content" contenteditable="true"></div>
+      </div>
+      <div class="signature-section">
+        <div class="signature-wrapper">
+          <span class="signature-label">Signature:</span>
+          <div class="signature-line"></div>
+        </div>
+        <div class="report-generated" id="reportGenerated"></div>
+      </div>
+      <div class="report-footer">
+        <div class="confidentiality">
+          <p>AI MGNN System - Confidential Report</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Action Buttons Section -->
+    <div class="action-buttons">
+      <button onclick="printReport()" class="btn print-btn">
+        <i class="icon">🖨️</i> Print
+      </button>
+      <div class="share-dropdown">
+        <button onclick="toggleShareMenu()" class="btn share-btn">
+          <i class="icon">📤</i> Share
+        </button>
+        <div id="shareMenu" class="share-menu">
+          <button onclick="toggleShareMenu()" class="share-option">Close</button>
+          <button onclick="shareViaWhatsApp()" class="share-option">WhatsApp</button>
+          <button onclick="shareViaEmail()" class="share-option">Email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/systemreports.js"></script>
+</body>
+</html>

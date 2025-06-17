@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMGNN - Authentication</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+  <div class="container" id="container">
+    <div class="card" id="card">
+      <!-- Login Form -->
+      <div class="side front" id="loginSide">
+        <h1>Login</h1>
+        <form id="LoginForm">
+          <div class="input-box">
+            <label for="loginUsername">Email</label>
+            <input type="text" id="loginUsername" placeholder="Email" />
+            <span class="error-message" id="loginUsernameError">This field is required.</span>
+          </div>
+          <div class="input-box">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Password" />
+            <span class="error-message" id="loginPasswordError">This field is required.</span>
+          </div>
+          <button class="btn" type="button" onclick="window.handleLogin()">Sign In</button>
+          
+          <p class="toggle-link">Don't have an account? <a onclick="window.flipTo('SignUp')">Sign Up</a></p>
+        </form>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="side back" id="signUpSide">
+        <h1>Sign Up</h1>
+        <form id="SignUpForm">
+          <div class="input-box">
+            <label for="signUpUsername">Username</label>
+            <input type="text" id="signUpUsername" placeholder="Username" />
+            <span class="error-message" id="signUpUsernameError">This field is required.</span>
+          </div>
+          <div class="input-box">
+            <label for="signUpEmail">Email Address</label>
+            <input type="email" id="signUpEmail" placeholder="Email" />
+            <span class="error-message" id="signUpEmailError">Please enter a valid email address.</span>
+          </div>
+          <div class="input-box">
+            <label for="signUpPassword">Password</label>
+            <input type="password" id="signUpPassword" placeholder="Password" />
+            <span class="error-message" id="signUpPasswordError">
+              Must be at least 8 chars, include uppercase, lowercase, digit, special char.
+            </span>
+          </div>
+          <div class="input-box">
+            <label for="signUpConfirmPassword">Confirm Password</label>
+            <input type="password" id="signUpConfirmPassword" placeholder="Confirm Password" />
+            <span class="error-message" id="signUpConfirmPasswordError">Passwords must match.</span>
+          </div>
+          <h3>Select Your Role</h3>
+          <div class="column">
+            <button type="button" onclick="selectRole(this, 'composer')">Composer</button>
+            <button type="button" onclick="selectRole(this, 'audio_engineer')">Audio Engineer</button>
+           <!-- <button type="button" onclick="selectRole(this, 'programmer')">Programmer</button> -->
+          </div>
+          <button class="btn" type="button" onclick="window.handleSignUp()">Sign Up</button>
+          <p class="toggle-link">Already have an account? <a onclick="window.flipTo('Login')">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Script (Module) -->
+
+  <script>
+    // Function to detect mobile devices
+    function isMobileDevice() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && window.innerHeight <= 1366) // Tablet detection
+      );
+    }
+
+    // Check if device is mobile/tablet and redirect
+    if (isMobileDevice()) {
+      window.location.href = 'notsupported.html';
+    }
+  </script>
+
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

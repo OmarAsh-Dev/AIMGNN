@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <!-- Define character encoding for proper text rendering -->
+  <meta charset="UTF-8">
+  <!-- Ensure responsive design for various devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set page title -->
+  <title>Composer Report Page</title>
+  <!-- Link to external CSS stylesheet -->
+  <link rel="stylesheet" href="css/composer_report.css">
+  <!-- Import external libraries for charting and PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <!-- Container for navbar content -->
+    <div class="navbar-container">
+      <!-- Display logo or title in navbar -->
+      <span class="navbar-logo">Composer Report Page</span>
+    </div>
+  </nav>
+
+  <!-- Main content container -->
+  <div class="container">
+    <!-- Control panel for report generation options -->
+    <div class="control-panel">
+      <!-- Date range selection section -->
+      <div class="control-section date-section">
+        <!-- Section title -->
+        <h3>Date Range</h3>
+        <!-- Inputs for selecting start and end dates -->
+        <div class="date-inputs">
+          <input type="date" id="startDate" class="date-picker" />
+          <input type="date" id="endDate" class="date-picker" />
+        </div>
+        <!-- Dropdown for predefined date ranges -->
+        <select id="datePresets" class="dropdown">
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+          <option value="quarter">This Quarter</option>
+          <option value="year">This Year</option>
+        </select>
+      </div>
+      <!-- Query selection section -->
+      <div class="control-section query-section">
+        <!-- Section title -->
+        <h3>Select Query</h3>
+        <!-- Dropdown for query type; currently supports custom aggregated query -->
+        <select id="querySelect" class="dropdown">
+          <option value="1">Custom Aggregated Query </option>
+        </select>
+      </div>
+      <!-- Report type selection and generation button -->
+      <div class="control-section report-section">
+        <!-- Section title -->
+        <h3>Report Type</h3>
+        <!-- Dropdown for selecting report visualization type -->
+        <select id="reportType" class="dropdown">
+          <option value="table">Table View</option>
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+        <!-- Button to trigger report generation -->
+        <button onclick="generateReport()" class="btn generate-btn">
+          <i class="icon">📊</i> Generate Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Report display section -->
+    <div id="reportContainer" class="report-container">
+      <!-- Report header with logos and title -->
+      <div class="report-header">
+        <!-- Container for logo images -->
+        <div class="logo-container">
+          <!-- Left logo -->
+          <div class="logo left-logo">
+            <img src="images/Picture1.png" alt="Logo 2" class="report-logo">
+          </div>
+          <!-- Center logo -->
+          <div class="logo center-logo">
+            <img src="images/Picture3.png" alt="Logo 3" class="report-logo">
+          </div>
+          <!-- Right logo -->
+          <div class="logo right-logo">
+            <img src="images/Picture2.png" alt="Logo 1" class="report-logo">
+          </div>
+        </div>
+        <!-- Title and subtitle section -->
+        <div class="title-section">
+          <!-- Subtitle -->
+          <p class="sub-title">AI MGNN</p>
+          <!-- Editable main report title -->
+          <h1 id="reportTitle" contenteditable="true">Composer Report</h1>
+        </div>
+      </div>
+      <!-- Container for report content (e.g., table or message) -->
+      <div id="reportContent" class="report-content"></div>
+      <!-- Container for chart visualization -->
+      <div id="chartContainer" class="chart-container">
+        <!-- Canvas for rendering charts -->
+        <canvas id="reportChart"></canvas>
+      </div>
+      <!-- Comments section -->
+      <div class="comment-section">
+        <!-- Label for comments -->
+        <div class="comment-label">Comments:</div>
+        <!-- Editable area for user comments -->
+        <div class="comment-content" contenteditable="true"></div>
+      </div>
+      <!-- Signature and generation timestamp section -->
+      <div class="signature-section">
+        <!-- Signature area -->
+        <div class="signature-wrapper">
+          <!-- Signature label -->
+          <span class="signature-label">Signature:</span>
+          <!-- Line for signature -->
+          <div class="signature-line"></div>
+        </div>
+        <!-- Timestamp of report generation -->
+        <div class="report-generated" id="reportGenerated"></div>
+      </div>
+      <!-- Report footer -->
+      <div class="report-footer">
+        <!-- Confidentiality notice -->
+        <div class="confidentiality">
+          <p>AI MGNN System - Confidential Report</p>
+        </div>
+        <!-- Page number placeholder removed as per requirement -->
+      </div>
+    </div>
+
+    <!-- Optional element visible only during printing -->
+    <div class="print-only"></div>
+
+    <!-- Action buttons for printing and sharing -->
+    <div class="action-buttons">
+      <!-- Button to print the report -->
+      <button onclick="printReport()" class="btn print-btn">
+        <i class="icon">🖨️</i> Print
+      </button>
+      <!-- Share options dropdown -->
+      <div class="share-dropdown">
+        <!-- Button to toggle share menu -->
+        <button onclick="toggleShareMenu()" class="btn share-btn">
+          <i class="icon">📤</i> Share
+        </button>
+        <!-- Share menu options -->
+        <div id="shareMenu" class="share-menu">
+          <!-- Close menu option -->
+          <button onclick="toggleShareMenu()" class="share-option">Close</button>
+          <!-- Share via WhatsApp -->
+          <button onclick="shareViaWhatsApp()" class="share-option">WhatsApp</button>
+          <!-- Share via Email -->
+          <button onclick="shareViaEmail()" class="share-option">Email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- External JavaScript file -->
+  <script type="module" src="js/composer_report.js"></script>
+</body>
+</html>

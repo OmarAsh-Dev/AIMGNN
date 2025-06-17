@@ -1,0 +1,947 @@
+/* Reset & Base Styles */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ :root {
+    --color-bg1: #212529;
+    --color-bg2: #1a1a2e;
+    --color-bg3: #22272d;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, var(--color-bg1), var(--color-bg2));
+    color: #ffffff;
+}
+
+
+/* Custom Scrollbar (WebKit Browsers) */
+
+ ::-webkit-scrollbar {
+    width: 3px !important;
+    height: 3px !important;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #1c1a1a;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #ed7624;
+    border-radius: 2px;
+}
+
+ ::-webkit-scrollbar-button {
+    display: none !important;
+}
+
+
+/* Firefox Scrollbar */
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #1c1a1a;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 95px;
+    height: 100vh;
+    background: linear-gradient(0deg, #000000, #131A26);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+
+/* Logo */
+
+.logo img {
+    width: 60px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.sidebar:hover .logo img {
+    transform: scale(1.25);
+}
+
+
+/* Sidebar Links */
+
+.nav-links {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+.nav-links a i {
+    font-size: 22px;
+    min-width: 40px;
+    text-align: center;
+}
+
+.nav-links a span {
+    display: none;
+}
+
+.sidebar:hover .nav-links a {
+    justify-content: flex-start;
+    padding-left: 25px;
+}
+
+.sidebar:hover .nav-links a span {
+    display: inline;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Footer Section */
+
+.footer {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .footer {
+    opacity: 1;
+}
+
+
+/* User Info */
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.user-info span {
+    display: none;
+}
+
+.sidebar:hover .user-info span {
+    display: inline;
+}
+
+
+/* Main Content Container */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 95px);
+    margin-left: 95px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    padding: 20px;
+    z-index: 1;
+}
+
+.sidebar:hover+.container {
+    margin-left: 250px;
+}
+
+
+/* Visualization Panel */
+
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 95px;
+    right: 0;
+    background: rgba(26, 26, 26, 0.85);
+    z-index: 998;
+    padding: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: left 0.3s ease;
+}
+
+.sidebar:hover ~ .fixed-header {
+    left: 250px;
+}
+
+.content-wrapper {
+    margin-top: 410px; /* Reduced from 280px */
+}
+
+#waveformContainer {
+    width: 100%;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(51, 51, 51, 0.5);
+    height: 120px; /* Reduced from 150px */
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.fixed-header h1 {
+    font-size: 1.2em; /* Smaller title */
+    margin: 0 0 5px 0; /* Reduced margin */
+    margin-top: 10px;
+}
+
+#fftContainer {
+    width: 100%;
+    height: 100px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.playback-controls {
+    margin: 5px 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: transparent;
+    padding: 3px 0;
+}
+
+.utility-controls-wrapper {
+    background: transparent;
+    padding: 3px 0;
+    margin-bottom: 5px;
+}
+
+/* Adjust button sizes */
+.control-group button,
+.utility-controls button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background: rgba(51, 51, 51, 0.7);
+    transition: background 0.3s ease;
+}
+
+.control-group button:hover,
+.utility-controls button:hover {
+    background: rgba(51, 51, 51, 0.9);
+}
+
+/* Adjust FFT container to be part of the fixed header */
+#fftCanvas {
+    width: 100%;
+    height: 100%;
+    transform-origin: center bottom;
+    transition: transform 0.3s ease;
+}
+
+#fftContainer:hover #fftCanvas {
+    transform: scaleY(1.05);
+}
+
+
+/* Controls Panel */
+
+.left-panel {
+    width: 100%;
+    background: #121212;
+    margin-top: -10px;
+    border-top: 1px solid #2C2C2C;
+    /* Set overflow auto if you want scrolling */
+    overflow: hidden;
+}
+
+
+/* Grid Layout for Control Sections – 3 columns per row with fixed row height */
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* Each control section fills its grid cell */
+
+.control-section {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.control-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Section Titles */
+
+.section-title {
+    color: #fe841c;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(254, 132, 28, 0.3);
+    padding-bottom: 5px;
+}
+
+
+/* Layout for control groups inside each section – horizontal layout */
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-group label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.control-group label span {
+    color: #fe841c;
+    font-weight: 500;
+    min-width: 50px;
+    text-align: right;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #2a2a2a;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #fe841c;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #ff9f4d;
+}
+
+.control-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #fe841c;
+}
+
+/* Specific styles for new effect sections */
+.control-section.bitcrusher .control-group input[type="range"]::-webkit-slider-thumb {
+    background: #ff4d4d;
+}
+
+.control-section.eq .control-group input[type="range"]::-webkit-slider-thumb {
+    background: #4dff4d;
+}
+
+.control-section.tremolo .control-group input[type="range"]::-webkit-slider-thumb {
+    background: #4d4dff;
+}
+
+.control-section.phaser .control-group input[type="range"]::-webkit-slider-thumb {
+    background: #ff4dff;
+}
+
+.control-section.gate .control-group input[type="range"]::-webkit-slider-thumb {
+    background: #ffff4d;
+}
+
+/* Hover effects for effect toggles */
+.control-group input[type="checkbox"]:checked + label {
+    color: #fe841c;
+    font-weight: 600;
+}
+
+/* Value display animations */
+.control-group label span {
+    transition: all 0.2s ease;
+}
+
+.control-group label:hover span {
+    transform: scale(1.1);
+    color: #ff9f4d;
+}
+
+/* Active effect section highlight */
+.control-section.active {
+    border: 1px solid #fe841c;
+    background: rgba(40, 40, 40, 0.9);
+}
+
+
+/* Buttons */
+
+button {
+    padding: 5px 10px;
+    background: #ed7624;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.3s ease;
+    font-size: 0.8em;
+}
+
+button:hover {
+    background: #00AEEF;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+select {
+    margin: 0;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+
+/* Volume Meter Styles */
+
+#volumeMeter {
+    width: 100%;
+    height: 10px;
+    background: #555;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+#volumeMeter .level {
+    height: 100%;
+    width: 50%;
+    /* Default level – update dynamically via JavaScript */
+    background: #ed7624;
+}
+
+
+/* Waveform Container */
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#timeMarkers {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    pointer-events: none;
+    color: #fff;
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#progress {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: red;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* Playback Controls */
+
+.playback-controls .control-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: row;
+}
+
+.playback-controls button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 100px;
+    background: #ed7624;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.playback-controls button:hover {
+    background: #00AEEF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playback-controls button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.playback-controls button i {
+    font-size: 16px;
+}
+
+
+/* FFT Container */
+
+#fftCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/* Selection Overlay */
+
+#selectionOverlay {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    display: none;
+    pointer-events: none;
+    top: 0;
+    height: 100%;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+    }
+    .sidebar:hover+.container {
+        margin-left: 0;
+    }
+    .controls-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns on smaller screens */
+    }
+    input[type="range"] {
+        width: 100%;
+    }
+    button {
+        padding: 5px 10px;
+    }
+    #waveformContainer,
+    #fftContainer {
+        height: 180px;
+    }
+}
+
+.generate-form {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#waveformContainer {
+    margin-top: 20px;
+    height: 200px;
+}
+
+#fftContainer {
+    height: 100px;
+    margin-top: 10px;
+}
+
+
+/* Text Input Area */
+
+.generate-form {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#prompt-textarea {
+    width: 95%;
+    height: 150px;
+    margin-left: 1.75%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    resize: none;
+}
+
+.group-generate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.generate-button {
+    background-color: #fe841c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100px;
+    height: 40 px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.prompt {
+    margin-top: 30px;
+}
+
+:root {
+    /* Neutral Colors */
+    --neutral-100: #F8F9FA;
+    --neutral-200: #E9ECEF;
+    --neutral-300: #DEE2E6;
+    --neutral-400: #CED4DA;
+    --neutral-500: #ADB5BD;
+    --neutral-600: #6C757D;
+    --neutral-700: #495057;
+    --neutral-800: #343A40;
+    --neutral-900: #212529;
+}
+
+.gradient-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    background: linear-gradient(to bottom, var(--neutral-900), #1a1a2e);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(19, 26, 38, 0.9);
+    color: #fe841c;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(254, 132, 28, 0.2);
+    backdrop-filter: blur(5px);
+    transform: translateX(200%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-text {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.logout {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#logout-button {
+    background: #fe841c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#logout-button:hover {
+    border: 1px solid #fe841c;
+    transform: scale(1.05);
+}
+
+#uploadBtn, #downloadBtn {
+    background: #ed7624;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+#uploadBtn:hover, #downloadBtn:hover {
+    background: #00AEEF;
+    transform: translateY(-1px);
+}
+
+#uploadBtn i, #downloadBtn i {
+    font-size: 14px;
+}
+
+/* Utility Controls */
+.utility-controls-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.utility-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.utility-controls button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background: #ed7624;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.utility-controls button:hover {
+    background: #00AEEF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.utility-controls button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.utility-controls button i {
+    font-size: 16px;
+}
+
+/* Update existing button styles to match */
+#uploadBtn, #downloadBtn, #fullscreenBtn {
+    background: #ed7624;
+}
+
+#uploadBtn:hover, #downloadBtn:hover, #fullscreenBtn:hover {
+    background: #00AEEF;
+}
+
+/* Channel Selection */
+.channel-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.channel-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background: #ed7624;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.radio-group label:hover:not(:checked + label) {
+    background: rgba(237, 118, 36, 0.3);
+}
+
+#channelControls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 10px;
+    flex-wrap: wrap;
+}
+
+#channelControls label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#channelControls input[type="checkbox"] {
+    margin: 0;
+}
+
+/* Update control section for channels to be more compact */
+.control-section:first-of-type {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.control-section:first-of-type .section-title {
+    margin-bottom: 5px;
+}
+

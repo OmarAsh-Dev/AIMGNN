@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Not Supported - AIMGNN</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff4444;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .logo {
+            width: 200px;
+            margin-bottom: 30px;
+        }
+        .warning-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #ff4444;
+        }
+    </style>
+    <script>
+        // Function to check if device is desktop
+        function isDesktopDevice() {
+            return !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) &&
+                   (window.innerWidth > 1024 || window.innerHeight > 1366);
+        }
+
+        // Check on page load
+        window.onload = function() {
+            if (isDesktopDevice()) {
+                window.location.href = 'index.html';
+            }
+        };
+
+        // Check on window resize
+        window.onresize = function() {
+            if (isDesktopDevice()) {
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="images/logo.png" alt="AIMGNN Logo" class="logo">
+        <div class="warning-icon">⚠️</div>
+        <h1>Device Not Supported</h1>
+        <p>This application is designed for desktop computers only. Please access this site using a desktop or laptop computer for the best experience.</p>
+    </div>
+</body>
+</html> 
