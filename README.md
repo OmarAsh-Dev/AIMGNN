@@ -15,14 +15,12 @@ AIMGNN is a full-stack AI-powered music generation platform built with a vanilla
 * [Prerequisites](#prerequisites)
 * [Installation & Setup](#installation--setup)
 * [Usage](#usage)
-
   * [Generating Music via Frontend](#generating-music-via-frontend)
   * [User Workflow](#user-workflow)
 * [API Endpoints](#api-endpoints)
 * [Samples](#samples)
 * [Citations](#citations)
 * [Acknowledgments](#acknowledgments)
-* [License](#license)
 * [Contributors](#contributors)
 * [Made By](#made-by)
 
@@ -138,8 +136,6 @@ python -m http.server 3000
 * [Sample 1](music/sample1.wav)
 * [Sample 2](music/sample2.wav)
 * [Sample 3](music/sample3.wav)
-
-*(Store files in `music/` folder and use relative links)*
 
 ---
 
