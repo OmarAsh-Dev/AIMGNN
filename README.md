@@ -82,8 +82,8 @@ pip install transformers audiocraft
 ## Run the App
 
 ```bash
-# Start FastAPI backend
-uvicorn musicgen.app:app --reload
+Start server_g.py using uvicorn 
+better run it on a platform like Lightning Ai and use Api builder for hosting it
 ```
 
 ```bash
@@ -100,7 +100,7 @@ python -m http.server 3000
 
 1. Open `generate.html`.
 2. Enter a **text prompt**.
-3. Optionally upload a melody seed (`.wav` or `.midi`).
+3. Optionally upload a melody seed (`.wav` or `.mp3`).
 4. Click **Generate**.
 5. Preview or download the result.
 
