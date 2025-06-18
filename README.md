@@ -191,6 +191,7 @@ Want to contribute? Open a PR or issue!
 | [@OmarAsh-Dev](https://github.com/OmarAsh-Dev)           | Omar Ahmed Shawqi           
 | [@Ahmed47Sameh](https://github.com/Ahmed47Sameh)         | Ahmed Sameh Saad 
 | [@MOHAMEDRAGEB2020](https://github.com/MOHAMEDRAGEB2020) | Mohamed Ali Ragab  
-| [@Abo4samra](https://github.com/Abo4samra)               | Ahmed Samir Mahmmod    
+| [@Abo4samra](https://github.com/Abo4samra)               | Ahmed Samir Mahmod    
 | [@pro-mohamed](https://github.com/pro-mohamed)           | Mohamed Abd El-mohsen    
 | [@ahmedhunter25](https://github.com/ahmedhunter25)       | Ahmed Kamal     
+| [@MohamedAttya74](https://github.com/MohamedAttya74)     | Mohamed Attya 
