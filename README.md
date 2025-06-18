@@ -133,26 +133,9 @@ python -m http.server 3000
 
 🎧 Example compositions generated using AIMGNN:
 
-<p>
-  <audio controls>
-    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample1.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
-</p>
-
-<p>
-  <audio controls>
-    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample2.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
-</p>
-
-<p>
-  <audio controls>
-    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample3.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
-</p>
+- [▶️ Sample 1](https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample1.wav)
+- [▶️ Sample 2](https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample2.wav)
+- [▶️ Sample 3](https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample3.wav)
 
 
 ---
