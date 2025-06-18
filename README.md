@@ -1,6 +1,12 @@
-![AIMGNN Logo](images/logo.png)
+<p align="center">
+  <img src="images/logo.png" alt="AIMGNN Logo" width="200"/>
+</p>
 
-**AIMGNN**
+# AIMGNN
+
+AIMGNN is a full-stack AI-powered music generation platform built with a vanilla JavaScript frontend and a Python FastAPI backend leveraging Meta's MusicGen model. Users can generate high-quality music by entering text prompts or uploading melody seeds, preview results in-browser, and download compositions.
+
+---
 
 ## Table of Contents
 
@@ -16,17 +22,18 @@
 * [Samples](#samples)
 * [Citations](#citations)
 * [Acknowledgments](#acknowledgments)
-
-AIMGNN is a full-stack AI-powered music generation platform built with a vanilla JavaScript frontend and a Python FastAPI backend leveraging Meta's MusicGen model. Users can generate high-quality music by entering text prompts or uploading melody seeds, preview results in-browser, and download compositions.
+* [License](#license)
+* [Contributors](#contributors)
+* [Made By](#made-by)
 
 ---
 
 ## Features
 
-* **Text-to-Music Generation:** Generate music from text prompts using advanced AI algorithms.
-* **Customizable Music:** Edit and fine-tune generated music with prompt-based customization.
-* **Download & Share:** Download your music in high-quality formats and share it with the world.
-* **Advanced Controls:** Fine-tune tempo, pitch, and other parameters for precise control over your music.
+* 🎵 **Text-to-Music Generation** – Generate music from text prompts using advanced AI algorithms.
+* 🎛️ **Customizable Music** – Edit and fine-tune generated music with prompt-based customization.
+* 💾 **Download & Share** – Download your music in high-quality formats and share it with the world.
+* ⚙️ **Advanced Controls** – Fine-tune tempo, pitch, and other parameters.
 
 ---
 
@@ -34,72 +41,58 @@ AIMGNN is a full-stack AI-powered music generation platform built with a vanilla
 
 ```
 AIMGNN/
-├── css/                   # Stylesheets for frontend pages
-├── gifs/                  # Animated previews and logos
-├── images/                # Static images used in UI
-├── js/                    # Vanilla JavaScript modules
-├── music/                 # Generated or sample audio files
-├── musicgen/              # Python code wrapping the MusicGen model
-├── *.html                 # Frontend pages (index.html, generate.html, etc.)
-
+├── css/                   # Stylesheets
+├── gifs/                  # Animated assets
+├── images/                # Static images
+├── js/                    # JavaScript modules
+├── music/                 # Audio output files
+├── musicgen/              # Python backend with MusicGen
+├── *.html                 # Frontend HTML pages
 ├── README.md              # This file
-├── requirements.txt       # Python dependencies
-└── account.html, dashboard.html…  # Additional UI pages
+├── requirements.txt       # Backend dependencies
+└── account.html, dashboard.html, ...
 ```
 
 ---
 
 ## Prerequisites
 
-* Python 3.8+ for backend services
-* Git to clone the repository
-* A modern web browser (Chrome, Firefox, Edge)
+* Python 3.8+
+* Git
+* A modern browser (Chrome, Firefox, etc.)
 
 ---
 
 ## Installation & Setup
 
-1. **Clone the repo**:
+```bash
+# Clone repository
+git clone https://github.com/OmarAsh-Dev/AIMGNN.git
+cd AIMGNN
 
-   ```bash
-   git clone https://github.com/OmarAsh-Dev/AIMGNN.git
-   cd AIMGNN
-   ```
+# Setup virtual environment
+python3 -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
-2. **Install Python dependencies**:
+# Install dependencies
+pip install -r requirements.txt
+pip install transformers audiocraft
+```
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
+---
 
-3. **(No build step needed)**
+## Run the App
 
-   * The frontend uses plain HTML, CSS, and JS; simply serve the `*.html`, `css/`, `js/`, and `images/` files.
+```bash
+# Start FastAPI backend
+uvicorn musicgen.app:app --reload
+```
 
-4. **Download MusicGen weights** via Hugging Face:
-
-   ```bash
-   pip install transformers audiocraft
-   ```
-
-5. **Run Backend**:
-
-   ```bash
-   uvicorn musicgen.app:app --reload  # or python login.py if using Flask
-   ```
-
-6. **Serve Frontend**:
-
-   * Option A: Place `*.html`, `css/`, `js/`, and `images/` under a static server (e.g., GitHub Pages, Vercel).
-   * Option B: Run a Python HTTP server:
-
-     ```bash
-     cd AIMGNN
-     python -m http.server 3000
-     ```
-   * Open `http://localhost:3000/index.html` in your browser.
+```bash
+# Serve frontend
+python -m http.server 3000
+# Open http://localhost:3000/index.html in your browser
+```
 
 ---
 
@@ -107,50 +100,52 @@ AIMGNN/
 
 ### Generating Music via Frontend
 
-1. Navigate to **Generate** page (e.g., `generate.html`).
-2. Enter a text prompt describing your desired music.
-3. (Optional) Upload a melody seed (`.wav` or `.midi`).
-4. Click **Generate**. The app calls the FastAPI endpoint and streams back an audio preview.
-5. Listen inline or click **Download** to save the `.wav` file.
+1. Open `generate.html`.
+2. Enter a **text prompt**.
+3. Optionally upload a melody seed (`.wav` or `.midi`).
+4. Click **Generate**.
+5. Preview or download the result.
 
 ---
 
-## User Workflow
+### User Workflow
 
-**Generate Music:**
+1. 💡 Generate music with text or melody input.
+2. 🧪 Customize tempo, pitch, and duration.
+3. 💾 Download and 🎧 share your creation.
 
-1. Enter a text prompt describing the type of music you want to create.
-2. Click "Generate" to let the AI create a unique composition.
+---
 
-**Edit Music:**
+## API Endpoints
 
-1. Use the customization options to adjust tempo, pitch, and other parameters.
-2. Fine-tune the music to match your creative vision.
-
-**Download & Share:**
-
-1. Once satisfied, download the music in your preferred format.
-2. Share your creations with the world!
-
-### API Endpoints
-
-* `POST /predict` – Generate music from a text prompt. Accepts multipart form-data:
+* `POST /predict`
 
   * `prompt` (string)
   * `duration` (int, seconds)
 
-* `POST /interpolation` – Generate an interpolation between a text prompt and an audio seed. Accepts multipart form-data:
+* `POST /interpolation`
 
   * `prompt` (string)
-  * `melody` (file, audio or MIDI)
+  * `melody` (file: .wav/.midi)
   * `duration` (int, seconds)
 
 ---
 
+## Samples
+
+🎧 Example compositions generated using AIMGNN:
+
+* [Sample 1](music/sample1.wav)
+* [Sample 2](music/sample2.wav)
+* [Sample 3](music/sample3.wav)
+
+*(Store files in `music/` folder and use relative links)*
+
+---
 
 ## Citations
 
-AIMGNN builds on Meta AI’s MusicGen. Please cite:
+Please cite Meta's original research:
 
 ```bibtex
 @inproceedings{copet2023musicgen,
@@ -161,8 +156,6 @@ AIMGNN builds on Meta AI’s MusicGen. Please cite:
   note = {arXiv:2306.05284}
 }
 ```
-
-Underlying audio codec citation:
 
 ```bibtex
 @misc{defossez2022encodec,
@@ -175,8 +168,32 @@ Underlying audio codec citation:
 }
 ```
 
+---
+
 ## Acknowledgments
 
-* [MusicGen (Audiocraft)](https://github.com/facebookresearch/audiocraft) for the generative model
-* Meta AI for open-sourcing state-of-the-art research
-* Community contributors and early testers
+* [MusicGen by Meta AI](https://github.com/facebookresearch/audiocraft)
+* Meta for open-sourcing cutting-edge research
+* Early testers and community contributors
+
+---
+
+
+## Contributors
+
+<a href="https://github.com/OmarAsh-Dev"><img src="https://avatars.githubusercontent.com/OmarAsh-Dev" width="50"/></a>
+
+Want to contribute? Open a PR or issue!
+
+---
+
+## Made By
+
+| GitHub Username                                          | Full Name                
+| -------------------------------------------------------- | ------------------------ 
+| [@OmarAsh-Dev](https://github.com/OmarAsh-Dev)           | Omar Ahmed Shawqi           
+| [@Ahmed47Sameh](https://github.com/Ahmed47Sameh)         | Ahmed Sameh Saad 
+| [@MOHAMEDRAGEB2020](https://github.com/MOHAMEDRAGEB2020) | Mohamed Ali Ragab  
+| Abo4samra                                                | Ahmed Samir Mahmmod    
+| [@pro-mohamed](https://github.com/pro-mohamed)           | Mohamed Abd El-mohsen    
+| [@ahmedhunter25](https://github.com/ahmedhunter25)       | Ahmed Kamal     
