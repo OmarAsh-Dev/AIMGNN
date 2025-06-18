@@ -135,24 +135,25 @@ python -m http.server 3000
 
 <p>
   <audio controls>
-    <source src="music/sample1.wav" type="audio/wav">
+    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample1.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 </p>
 
 <p>
   <audio controls>
-    <source src="music/sample2.wav" type="audio/wav">
+    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample2.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 </p>
 
 <p>
   <audio controls>
-    <source src="music/sample3.wav" type="audio/wav">
+    <source src="https://github.com/OmarAsh-Dev/AIMGNN/raw/main/music/sample3.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 </p>
+
 
 ---
 
